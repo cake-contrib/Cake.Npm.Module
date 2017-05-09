@@ -85,6 +85,7 @@ namespace Cake.Npm.Module
                 return result;
             }
 
+            _log.Warning("Could not determine installed package files! Installation may not be complete.");
             // TODO: maybe some warnings here
             return result;
         }
