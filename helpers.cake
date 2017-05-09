@@ -9,7 +9,7 @@ List<NuSpecContent> GetContent(IEnumerable<string> frameworks, ProjectCollection
                 .Where(f => f.GetExtension() != ".pdb")
                 .Where(f => !f.FullPath.Contains("Cake.Core"))
                 .Where(f => !f.FullPath.Contains("Cake.Common"))
-                .Select(f => new NuSpecContent { Source = f.FullPath, Target = "lib/" + framework});
+                .Select(f => new NuSpecContent { Source = f.FullPath, Target = "lib\\" + framework});
             content.AddRange(libFiles);
         }
     }
