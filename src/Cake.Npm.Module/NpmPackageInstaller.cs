@@ -66,7 +66,7 @@ namespace Cake.Npm.Module
             // Install the package.
             _log.Debug("Installing package {0} with npm...", package.Package);
             var process = _processRunner.Start(
-                "dnf",
+                "npm",
                 new ProcessSettings { Arguments = GetArguments(package, _config), RedirectStandardOutput = true, Silent = _log.Verbosity < Verbosity.Diagnostic });
 
             process.WaitForExit();
@@ -166,13 +166,12 @@ namespace Cake.Npm.Module
 
         private void GetSaveArguments(ProcessArgumentBuilder arguments, PackageReference definition)
         {
-            arguments.Append("--save");
                 var values = definition.Parameters["save"].ToList();
                 foreach (var value in values)
                 {
                     if (string.IsNullOrWhiteSpace(value))
                     {
-                        continue;
+                        arguments.Append("--save");
                     }
                     else
                     {
