@@ -7,7 +7,7 @@ namespace Cake.Npm.Module
     {
         internal static bool GetSwitch(this PackageReference package, string key, bool requireValue = false) {
             bool value = false;
-            if (requireValue) {
+            if (!requireValue) {
                 return package.Parameters.ContainsKey(key);
             } else {
                 if (package.Parameters.ContainsKey(key) && bool.TryParse(package.Parameters[key].First(), out value)) {

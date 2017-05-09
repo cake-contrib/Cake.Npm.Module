@@ -43,6 +43,7 @@ namespace Cake.Npm.Module
             DirectoryPath modulesPath;
             if (isGlobal) {
                 modulesPath = GetGlobalPrefix()?.Combine("./bin/");
+                _log.Verbose($"Found global npm path at: {modulesPath.FullPath}");
                 _log.Verbose("Using global npm binaries folder: installation may succeed without binaries being installed");
             } else
             {
@@ -54,7 +55,7 @@ namespace Cake.Npm.Module
             }
             var installRoot = _fileSystem.GetDirectory(modulesPath);
             if (installRoot.Exists) {
-                return new ReadOnlyCollection<IFile>(installRoot.GetFiles("**/*", SearchScope.Recursive).ToList());
+                return new ReadOnlyCollection<IFile>(installRoot.GetFiles("*", SearchScope.Recursive).ToList());
             }
             return new ReadOnlyCollection<IFile>(new List<IFile>());
         }

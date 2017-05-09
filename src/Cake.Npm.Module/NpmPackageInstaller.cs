@@ -142,7 +142,7 @@ namespace Cake.Npm.Module
                 GetSaveArguments(arguments, definition);
             }
 
-            var packageString = new StringBuilder(definition.Package);
+            var packageString = new StringBuilder();
 
             if (definition.HasValue("source", out source))
             {
