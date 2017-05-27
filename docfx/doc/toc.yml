@@ -10,3 +10,5 @@
   href: configuration.md
 - name: Contributing
   href: contributing.md
+- name: Module or Addin
+  href: cake-npm.md
