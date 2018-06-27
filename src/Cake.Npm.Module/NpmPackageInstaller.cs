@@ -10,14 +10,24 @@ using Cake.Core.Packaging;
 
 namespace Cake.Npm.Module
 {
+    /// <summary>
+    /// <see cref="IPackageInstaller"/> implementation for the npm package manager.
+    /// </summary>
     public class NpmPackageInstaller : IPackageInstaller
     {
-        private ICakeEnvironment _environment;
-        private IProcessRunner _processRunner;
-        private ICakeLog _log;
-        private INpmContentResolver _contentResolver;
-        private ICakeConfiguration _config;
+        private readonly ICakeEnvironment _environment;
+        private readonly IProcessRunner _processRunner;
+        private readonly ICakeLog _log;
+        private readonly INpmContentResolver _contentResolver;
+        private readonly ICakeConfiguration _config;
 
+	/// <summary>
+        /// Initializes a new instance of the <see cref="NpmPackageInstaller"/> type.
+        /// </summary>
+        /// <param name="processRunner">The process runner.</param>
+        /// <param name="log">The log.</param>
+        /// <param name="contentResolver">The content resolver.</param>
+        /// <param name="config">The configuration.</param>
         public NpmPackageInstaller(ICakeEnvironment environment, IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config)
         {
             if (environment == null)
@@ -46,6 +56,16 @@ namespace Cake.Npm.Module
             _contentResolver = contentResolver;
             _config = config;
         }
+
+        /// <summary>
+        /// Determines whether this instance can install the specified resource.
+        /// </summary>
+        /// <param name="package">The package resource.</param>
+        /// <param name="type">The package type.</param>
+        /// <returns>
+        ///   <c>true</c> if this installer can install the
+        ///   specified resource; otherwise <c>false</c>.
+        /// </returns>
         public bool CanInstall(PackageReference package, PackageType type)
         {
             if (package == null)
@@ -56,6 +76,13 @@ namespace Cake.Npm.Module
             return package.Scheme.Equals(Constants.PackageScheme, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Installs the specified resource.
+        /// </summary>
+        /// <param name="package">The package resource.</param>
+        /// <param name="type">The package type.</param>
+        /// <param name="path">The location where to install the resource.</param>
+        /// <returns>The installed files.</returns>
         public IReadOnlyCollection<IFile> Install(PackageReference package, PackageType type, DirectoryPath path)
         {
             if (package == null)
@@ -94,10 +121,6 @@ namespace Cake.Npm.Module
             PackageReference definition,
             ICakeConfiguration config)
         {
-            string source;
-            string scope;
-            string version;
-
             var arguments = new ProcessArgumentBuilder();
 
             arguments.Append("install");
@@ -144,18 +167,18 @@ namespace Cake.Npm.Module
 
             var packageString = new StringBuilder();
 
-            if (definition.HasValue("source", out source))
+            if (definition.HasValue("source", out string source))
             {
                 packageString.Append(source.Trim(':') + ":");
             }
-            if (definition.HasValue("scope", out scope))
+            if (definition.HasValue("scope", out string scope))
             {
                 packageString.Append("@" + scope.Trim('@') + "/");
             }
 
             packageString.Append(definition.Package);
 
-            if (definition.HasValue("version", out version))
+            if (definition.HasValue("version", out string version))
             {
                 packageString.Append(("@" + version.Trim(':', '=', '@')).Quote());
             }

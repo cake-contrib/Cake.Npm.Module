@@ -8,8 +8,12 @@ using Cake.Npm.Module;
 
 namespace Cake.Npm.Module
 {
+    /// <summary>
+    /// Module type to add support for the npm package manager.
+    /// </summary>
     public class NpmModule : ICakeModule
     {
+        /// <inheritdoc />
         public void Register(ICakeContainerRegistrar registrar)
         {
             if (registrar == null) {

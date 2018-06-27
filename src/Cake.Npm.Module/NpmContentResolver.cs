@@ -9,20 +9,39 @@ using Cake.Core.Diagnostics;
 
 namespace Cake.Npm.Module
 {
+
+    /// <summary>
+    /// A content resolver for packages installed with the npm package manager.
+    /// </summary>
     public class NpmContentResolver : INpmContentResolver
     {
-        private IFileSystem _fileSystem;
-        private ICakeEnvironment _environment;
-        private IGlobber _globber;
-        private ICakeLog _log;
+        private readonly IFileSystem _fileSystem;
+        private readonly ICakeEnvironment _environment;
+        private readonly IGlobber _globber;
+        private readonly ICakeLog _log;
 
-        public NpmContentResolver(IFileSystem fileSystem, ICakeEnvironment environment, IGlobber globber, ICakeLog log)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NpmContentResolver"/> type.
+        /// </summary>
+        /// <param name="fileSystem">The file system.</param>
+        /// <param name="environment">The environment.</param>
+	/// <param name="globber">The globber.</param>
+        /// <param name="log">The log.</param>
+	public NpmContentResolver(IFileSystem fileSystem, ICakeEnvironment environment, IGlobber globber, ICakeLog log)
         {
             _fileSystem = fileSystem;
             _environment = environment;
             _globber = globber;
             _log = log;
         }
+
+        /// <summary>
+        /// Returns the files installed by the given package
+        /// </summary>
+        /// <param name="package">The package.</param>
+        /// <param name="type">The package type.</param>
+        /// <param name="isGlobal">Whether the package is globally installed.</param>
+        /// <returns></returns>
         public IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, bool isGlobal)
         {
             if (type == PackageType.Addin)
@@ -42,7 +61,7 @@ namespace Cake.Npm.Module
         {
             DirectoryPath modulesPath;
             if (isGlobal) {
-                modulesPath = GetGlobalPrefix()?.Combine("./bin/");
+                modulesPath = GetGlobalPrefix()?.Combine("./bin/") ?? "./bin";
                 _log.Verbose($"Found global npm path at: {modulesPath.FullPath}");
                 _log.Verbose("Using global npm binaries folder: installation may succeed without binaries being installed");
             } else
@@ -85,8 +104,9 @@ namespace Cake.Npm.Module
             }
             if (_fileSystem.Exist(GetNpmConfigPath())) {
                 var config = _fileSystem.GetFile(GetNpmConfigPath()).ReadLines(System.Text.Encoding.UTF8);
-                if (config.Any(l => l.StartsWith("prefix="))) {
-                    return config.FirstOrDefault(l => l.StartsWith("prefix=")).Split('=').Last();
+                var lines = config as IList<string> ?? config.ToList();
+                if (lines.Any(l => l.StartsWith("prefix="))) {
+                    return lines.FirstOrDefault(l => l.StartsWith("prefix=")).Split('=').Last();
                 }
             }
             return GetDefaultPath();
