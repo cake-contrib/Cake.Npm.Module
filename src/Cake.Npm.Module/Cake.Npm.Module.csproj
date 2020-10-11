@@ -5,6 +5,8 @@
     <DebugType>embedded</DebugType>
     <AssemblyName>Cake.Npm.Module</AssemblyName>
     <PackageId>Cake.Npm.Module</PackageId>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
+    <PackageIcon>$(CakeContribGuidelinesIconDestinationLocation)</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>

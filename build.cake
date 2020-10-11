@@ -154,6 +154,9 @@ Task("NuGet")
 		Tags			= new[] { "cake", "build", "ci", "build", "npm", "node" },
 		OutputDirectory = artifacts + "/package",
 		Files			= content,
+		IconUrl         =  new Uri("https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png"),
+		//Icon            = "icon.png" -- see https://github.com/cake-build/cake/pull/2878
+
 		//KeepTemporaryNuSpecFile = true
 	};
 
