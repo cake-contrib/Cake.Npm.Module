@@ -1,4 +1,8 @@
 using System;
+using System.IO;
+
+using Cake.Core;
+using Cake.Core.IO;
 using Cake.Core.Packaging;
 using Cake.Npm.Module;
 using NSubstitute;
@@ -186,6 +190,39 @@ namespace Cake.Npm.Module.Tests
 
                 // Then
                 Assert.Null(result);
+            }
+        }
+ 
+        public sealed class TheToolLocator
+        {
+            [Fact]
+            public void Should_Throw_If_Npm_Can_Not_Be_Found()
+            {
+                // Given
+                var fixture = new NpmPackageInstallerFixture();
+                fixture.ToolLocatorSetup = l => l.Resolve(string.Empty).ReturnsForAnyArgs((FilePath)null);
+
+                // When
+                var result = Record.Exception(() => fixture.Install());
+
+                // Then
+                Assert.IsType<FileNotFoundException>(result);
+                Assert.Equal("npm could not be found.", ((FileNotFoundException)result).Message);
+            }
+
+            [Fact]
+            public void Should_Not_Check_For_Npm_If_NpmCmd_Can_Be_Found()
+            {
+                // Given
+                var fixture = new NpmPackageInstallerFixture();
+                fixture.ToolLocatorSetup = l => l.Resolve("npm.cmd").Returns(new FilePath("npm.cmd"));
+
+                // When
+                var result = fixture.Install();
+
+                // Then
+                fixture.ToolLocator.Received().Resolve("npm.cmd");
+                fixture.ToolLocator.Received(0).Resolve("npm");
             }
         }
     }

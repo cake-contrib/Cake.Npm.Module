@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Cake.Core;
@@ -7,6 +8,7 @@ using Cake.Core.Configuration;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
+using Cake.Core.Tooling;
 
 namespace Cake.Npm.Module
 {
@@ -20,15 +22,16 @@ namespace Cake.Npm.Module
         private readonly ICakeLog _log;
         private readonly INpmContentResolver _contentResolver;
         private readonly ICakeConfiguration _config;
+        private readonly IToolLocator _toolLocator;
 
-	/// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="NpmPackageInstaller"/> type.
         /// </summary>
         /// <param name="processRunner">The process runner.</param>
         /// <param name="log">The log.</param>
         /// <param name="contentResolver">The content resolver.</param>
         /// <param name="config">The configuration.</param>
-        public NpmPackageInstaller(ICakeEnvironment environment, IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config)
+        public NpmPackageInstaller(ICakeEnvironment environment, IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)
         {
             if (environment == null)
             {
@@ -55,6 +58,7 @@ namespace Cake.Npm.Module
             _log = log;
             _contentResolver = contentResolver;
             _config = config;
+            _toolLocator = toolLocator;
         }
 
         /// <summary>
@@ -90,10 +94,27 @@ namespace Cake.Npm.Module
                 throw new ArgumentNullException(nameof(package));
             }
 
+            // find npm
+            _log.Debug("looking for npm.cmd"); 
+            var npmTool = _toolLocator.Resolve("npm.cmd");
+
+            if (npmTool == null)
+            {
+                _log.Debug("looking for npm");
+                npmTool = _toolLocator.Resolve("npm");
+            }
+
+            if (npmTool == null)
+            {
+                throw new FileNotFoundException("npm could not be found.");
+            }
+
+            _log.Debug("Found npm at {0}", npmTool);
+
             // Install the package.
             _log.Debug("Installing package {0} with npm...", package.Package);
             var process = _processRunner.Start(
-                "npm",
+                npmTool.FullPath,
                 new ProcessSettings { Arguments = GetArguments(package, _config), RedirectStandardOutput = true, Silent = _log.Verbosity < Verbosity.Diagnostic });
 
             process.WaitForExit();

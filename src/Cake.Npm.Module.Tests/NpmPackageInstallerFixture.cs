@@ -7,6 +7,8 @@ using Cake.Core.Configuration;
 using Cake.Testing;
 using NSubstitute;
 using System.Collections.Generic;
+using Cake.Core.Tooling;
+using System;
 
 namespace Cake.Npm.Module.Tests
 {
@@ -27,6 +29,11 @@ namespace Cake.Npm.Module.Tests
 
         public ICakeConfiguration Config { get; private set; }
 
+        public IToolLocator ToolLocator { get; }
+        
+        public Action<IToolLocator> ToolLocatorSetup { get; set; }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NpmPackageInstallerFixture"/> class.
         /// </summary>
@@ -41,6 +48,7 @@ namespace Cake.Npm.Module.Tests
             Package = new PackageReference("npm:?package=yo");
             PackageType = PackageType.Addin;
             InstallPath = new DirectoryPath("./fake-path");
+            ToolLocator = Substitute.For<IToolLocator>();
         }
 
         /// <summary>
@@ -49,7 +57,19 @@ namespace Cake.Npm.Module.Tests
         /// <returns>The Npm package installer.</returns>
         internal NpmPackageInstaller CreateInstaller()
         {
-            return new NpmPackageInstaller(Environment, ProcessRunner, Log, ContentResolver, Config);
+            var setup = ToolLocatorSetup;
+            if(setup == null)
+            {
+                setup = l =>
+                {
+                    l.Resolve("npm.cmd").Returns((FilePath)null);
+                    l.Resolve("npm").Returns(new FilePath("npm"));
+                };
+            }
+
+            setup(ToolLocator);
+
+            return new NpmPackageInstaller(Environment, ProcessRunner, Log, ContentResolver, Config, ToolLocator);
         }
 
         /// <summary>
