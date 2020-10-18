@@ -1,26 +1,23 @@
-#---------------------------------#
-#  Build Script                   #
-#---------------------------------#
-build_script:
-  - ps: .\build.ps1 -Target NuGet
+image:
+  - Visual Studio 2019
 
-# Tests
-test: off
+pull_requests:
+  do_not_increment_build_number: true
 
-#---------------------------------#
-#        Branches to build        #
-#---------------------------------#
+skip_branch_with_pr: true
+
 branches:
-  # Whitelist
   only:
     - develop
     - master
-    - /release/.*/
-    - /hotfix/.*/
+    - /release\/.*/
+    - /hotfix\/.*/
 
-#---------------------------------#
-#  Build Cache                    #
-#---------------------------------#
+test: off
+build: off
+
+build_script:
+  - ps: .\build.ps1 --target=CI --verbosity=Diagnostic
+
 cache:
-- src\packages -> src\**\packages.config
-- tools -> build.cake
+  - "tools -> recipe.cake"

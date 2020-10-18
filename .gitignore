@@ -276,8 +276,6 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 tools/**
-!tools/packages.config
-!tools/Modules/packages.config
 
 # Telerik's JustMock configuration file
 *.jmconfig
@@ -288,5 +286,5 @@ tools/**
 *.odx.cs
 *.xsd.cs
 
-dist/**
+[Bb]uild[Aa]rtifacts/
 /src/Cake.Npm.Module/icon.png
