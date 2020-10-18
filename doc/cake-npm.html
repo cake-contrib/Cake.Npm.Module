@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Cake.Npm vs Cake.Npm.Module </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Cake.Npm vs Cake.Npm.Module ">
+    <meta name="generator" content="docfx 2.33.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../doc/intro.html" title="Documentation" class="active">Documentation</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/" title="Reference" class="">Reference</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <a href="intro.html" title="Introduction" class="">Introduction</a>
+                    </li>
+                    <li class="">
+                      <a href="install.html" title="Installation" class="">Installation</a>
+                    </li>
+                    <li class="">
+                      <a href="parameters.html" title="Parameters" class="">Parameters</a>
+                    </li>
+                    <li class="">
+                      <a href="examples.html" title="Examples" class="">Examples</a>
+                    </li>
+                    <li class="">
+                      <a href="configuration.html" title="Configuration" class="">Configuration</a>
+                    </li>
+                    <li class="">
+                      <a href="contributing.html" title="Contributing" class="">Contributing</a>
+                    </li>
+                    <li class="active">
+                      <a href="cake-npm.html" title="Module or Addin" class="active">Module or Addin</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cakenpm-vs-cakenpmmodule"><code>Cake.Npm</code> vs <code>Cake.Npm.Module</code></h1>
+
+<p>Cake already has support for <code>npm</code> using the <a href="https://nuget.org/packages/Cake.Npm"><code>Cake.Npm</code></a> addin from community member <em><a href="https://github.com/philo">philo</a></em>. The addin also supports installing packages using the <code>NpmInstall()</code> alias, in a similar fashion to this module.</p>
+<p>Using this module doesn&#39;t replace the addin, and you can even use both in the same script. So what&#39;s the difference?</p>
+<p>This module integrates itself into the internals of Cake meaning that tools installed using the <code>#tool npm:</code> directive are installed before the script itself is run. This is especially useful when your script uses tools installed from npm, like <code>Cake.Yeoman</code>, <code>Cake.Tfx</code>, or <code>Cake.AutoRest</code>.</p>
+<p>Conversely, the addin is more flexible, so you can install tools only when required and have more control over when in the script you install your required npm packages. When using the module, every <code>#tool</code> is installed every time you run, regardless of whether it&#39;s needed. The addin also supports other npm commands like <code>pack</code>, <code>publish</code> and <code>run</code>, while the module only supports <code>install</code>.</p>
+<p>Finally, remember that while Cake will install addins for you (when using the <code>#addin</code> directive), modules need to be installed into the modules directory <strong>before</strong> the script runs. The <a href="https://raw.githubusercontent.com/cake-build/resources/develop/build.ps1">latest PowerShell bootstrapper</a> does this for you, but when using your own script, or running in another environment you may need to install the module yourself before <code>cake.exe</code> starts.</p>
+<p>In summary:</p>
+<p><strong>Addin:</strong></p>
+<ul>
+<li>Automatically installed by Cake</li>
+<li>Can be conditionally run</li>
+<li>Supports installing multiple packages</li>
+<li>Supports <code>npm pack</code>, <code>npm publish</code> and <code>npm run</code></li>
+</ul>
+<p><strong>Module:</strong></p>
+<ul>
+<li>Packages are installed before the script is run</li>
+<li>Needs to be installed by bootstrapper (or equivalent)</li>
+<li>Integrated into Cake directly (including tool resolution)</li>
+<li>Allows declaring <code>#tool</code> directives alongside other packages (i.e. NuGet, DNF, Chocolatey)</li>
+</ul>
+<p>Deciding whether to install your desired packages using the module or the addin will depend on your specific build requirements, your environment and how you intend to use your packages. Remember you can always get help in <a href="https://gitter.im/cake-build/cake">the Gitter room</a> if you have any questions about the addin or module.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/nils-a/Cake.Npm.Module/blob/develop/docfx/doc/cake-npm.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
