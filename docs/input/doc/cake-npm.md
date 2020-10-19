@@ -1,3 +1,8 @@
+---
+Order: 7
+Title: Module or Addin
+---
+
 # `Cake.Npm` vs `Cake.Npm.Module`
 
 Cake already has support for `npm` using the [`Cake.Npm`](https://nuget.org/packages/Cake.Npm) addin from community member *[philo](https://github.com/philo)*. The addin also supports installing packages using the `NpmInstall()` alias, in a similar fashion to this module.

@@ -1,11 +1,19 @@
+---
+Order: 3
+Title: Parameters
+---
+
 The folllowing URI parameters are supported by the Cake.Npm.Module.
 
 # Registry
 
 By default, npm will attempt to install packages using the `registry.npmjs.org` registry, unless you have configured it otherwise. To use a specific repository, provide a source in the URI.
 
-> [!WARNING]
-> Using this parameter invokes the underlying `--registry` option, meaning that *only* this registry will be used for the installation.
+:::{.alert .alert-warning}
+**WARNING**
+
+Using this parameter invokes the underlying `--registry` option, meaning that *only* this registry will be used for the installation.
+:::
 
 ### Example
 
@@ -23,8 +31,11 @@ This is the name of the npm package that you would like to install.  This should
 #tool npm:?package=yo
 ```
 
-> [!NOTE]
-> While you can specify the scope and tag here, it's recommended to use the `scope` and `version` parameters (see below)
+:::{.alert .alert-info}
+**NOTE**
+
+While you can specify the scope and tag here, it's recommended to use the `scope` and `version` parameters (see below)
+:::
 
 # Version
 
@@ -76,7 +87,7 @@ This allows using npm's support for installing directly from some repositories. 
 
 ### Example
 
-```csharp
+```cs
 #tool npm:?package=yeoman/yo&source=github
 // equivalent to npm install github:yeoman/yo
 ```
@@ -85,8 +96,11 @@ This allows using npm's support for installing directly from some repositories. 
 
 This allows installing scoped packages.
 
-> [!NOTE]
-> While providing the scope with the package name *should* work, it's recommended to use this option.
+:::{.alert .alert-info}
+**NOTE**
+
+While providing the scope with the package name *should* work, it's recommended to use this option.
+:::
 
 ### Example
 
