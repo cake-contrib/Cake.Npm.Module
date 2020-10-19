@@ -1,0 +1,148 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/_dev/Cake.Npm.Module/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "iVNlzR5xvw2OziSFuzQPBw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/cake-npm.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/cake-npm.html",
+          "hash": "gj5kAl4t6goxn9Vq+aAGSw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/configuration.html",
+          "hash": "l/lvWxW8wqn+1xZb5aF3oA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/contributing.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/contributing.html",
+          "hash": "rNeZmwBfkGrKzbAIVPaYPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/examples.html",
+          "hash": "3GwPRPk1NgsRkDByTI8Dew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/install.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/install.html",
+          "hash": "BmQdsyD0SJ6nqE9lBEgWIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/intro.html",
+          "hash": "cHWhSCvUEXadY3lu/VH9tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "doc/parameters.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/parameters.html",
+          "hash": "YeeDk+P+/0Ia/wBRuzQ5tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "5hn+jD86eUl/N/OO2c8CLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

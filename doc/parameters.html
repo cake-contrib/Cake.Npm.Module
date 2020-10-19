@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Registry </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Registry ">
+    <meta name="generator" content="docfx 2.33.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                <ul class="nav level1 navbar-nav">
+                  <li class="active">
+                    <a href="../doc/intro.html" title="Documentation" class="active">Documentation</a>
+                  </li>
+                  <li class="">
+                    <a href="../api/" title="Reference" class="">Reference</a>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <a href="intro.html" title="Introduction" class="">Introduction</a>
+                    </li>
+                    <li class="">
+                      <a href="install.html" title="Installation" class="">Installation</a>
+                    </li>
+                    <li class="active">
+                      <a href="parameters.html" title="Parameters" class="active">Parameters</a>
+                    </li>
+                    <li class="">
+                      <a href="examples.html" title="Examples" class="">Examples</a>
+                    </li>
+                    <li class="">
+                      <a href="configuration.html" title="Configuration" class="">Configuration</a>
+                    </li>
+                    <li class="">
+                      <a href="contributing.html" title="Contributing" class="">Contributing</a>
+                    </li>
+                    <li class="">
+                      <a href="cake-npm.html" title="Module or Addin" class="">Module or Addin</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>The folllowing URI parameters are supported by the Cake.Npm.Module.</p>
+<h1 id="registry">Registry</h1>
+<p>By default, npm will attempt to install packages using the <code>registry.npmjs.org</code> registry, unless you have configured it otherwise. To use a specific repository, provide a source in the URI.</p>
+<div class="WARNING"><h5>Warning</h5><p>Using this parameter invokes the underlying <code>--registry</code> option, meaning that <em>only</em> this registry will be used for the installation.</p>
+</div>
+<h3 id="example">Example</h3>
+<pre><code>#tool npm:http://registry.npmjs.org?package=yo
+</code></pre><h1 id="package">Package</h1>
+<p>This is the name of the npm package that you would like to install.  This should match the package name exactly.</p>
+<h3 id="example-1">Example</h3>
+<pre><code>#tool npm:?package=yo
+</code></pre><div class="NOTE"><h5>Note</h5><p>While you can specify the scope and tag here, it&#39;s recommended to use the <code>scope</code> and <code>version</code> parameters (see below)</p>
+</div>
+<h1 id="version">Version</h1>
+<p>The specific version of the package that is being installed.  If not provided, npm will install the latest package version that is available.</p>
+<h3 id="example-2">Example</h3>
+<pre><code>#tool npm:?package=yo&amp;version=1.8.5
+</code></pre><h1 id="force">Force</h1>
+<p>This is equivalent to the <code>--force</code> switch and will force npm to fetch remote resources even if a local copy exists on disk.</p>
+<h3 id="example-3">Example</h3>
+<pre><code>#tool npm:?package=yo&amp;version=1.8.5&amp;force
+</code></pre><h1 id="global">Global</h1>
+<p>This corresponds to the <code>--global</code> option, and tells npm to install this package globally, rather than to the project-local modules.</p>
+<h3 id="example-4">Example</h3>
+<pre><code>#tool npm:?package=yo&amp;global
+</code></pre><h1 id="save">Save</h1>
+<p>This corresponds to the <code>--save*</code> options and controls npm&#39;s behaviour for saving dependencies. Specifying <code>save</code> with no arguments is equivalent to <code>--save</code>, while providing a value (or multiple parameters) provides fine-grained control.</p>
+<h3 id="examples">Examples</h3>
+<pre><code class="lang-csharp">#tool npm:?package=yo&amp;save //equivalent to --save
+#tool npm:?package=yo&amp;save=dev //equivalent to --save-dev
+#tool npm:?package=yo&amp;save=optional //equivalent to --save-optional
+#tool npm:?package=yo&amp;save=dev&amp;save=exact //equivalent to --save-dev --save-exact
+#tool npm:?package=yo&amp;save=optional&amp;save=bundle //equivalent to --save-optional --save-bundle
+</code></pre><h1 id="source">Source</h1>
+<p>This allows using npm&#39;s support for installing directly from some repositories. Supported sources include <code>github</code>, <code>gist</code>, <code>bitbucket</code>, and <code>gitlab</code></p>
+<h3 id="example-5">Example</h3>
+<pre><code class="lang-csharp">#tool npm:?package=yeoman/yo&amp;source=github
+// equivalent to npm install github:yeoman/yo
+</code></pre><h1 id="scope">Scope</h1>
+<p>This allows installing scoped packages.</p>
+<div class="NOTE"><h5>Note</h5><p>While providing the scope with the package name <em>should</em> work, it&#39;s recommended to use this option.</p>
+</div>
+<h3 id="example-6">Example</h3>
+<pre><code class="lang-csharp">#tool npm:?package=app-scripts&amp;scope=ionic
+// equivalent to npm install @ionic/app-scripts
+</code></pre><h1 id="others">Others</h1>
+<p>The module also allows a couple of other options, corresponding to their CLI equivalents:</p>
+<pre><code class="lang-csharp">#tool npm:?package=yo&amp;ignore-scripts // npm install yo --ignore-scripts
+#tool npm:?package=yo&amp;no-optional // npm install yo --no-optional
+</code></pre><p>If there are other CLI options you need the module to support, raise an issue <a href="https://github.com/cake-contrib/Cake.Npm.Module/">on GitHub</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/nils-a/Cake.Npm.Module/blob/develop/docfx/doc/parameters.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
