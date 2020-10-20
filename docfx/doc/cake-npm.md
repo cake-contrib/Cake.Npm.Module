@@ -8,7 +8,7 @@ This module integrates itself into the internals of Cake meaning that tools inst
 
 Conversely, the addin is more flexible, so you can install tools only when required and have more control over when in the script you install your required npm packages. When using the module, every `#tool` is installed every time you run, regardless of whether it's needed. The addin also supports other npm commands like `pack`, `publish` and `run`, while the module only supports `install`.
 
-Finally, remember that while Cake will install addins for you (when using the `#addin` directive), modules need to be installed into the modules directory **before** the script runs. The [latest PowerShell bootstrapper](https://raw.githubusercontent.com/cake-build/resources/develop/build.ps1) does this for you, but when using your own script, or running in another environment you may need to install the module yourself before `cake.exe` starts.
+Finally, remember that while Cake will install addins for you (when using the `#addin` directive), modules need to be installed into the modules directory **before** the script runs. Cake can also do this for you, but it has to be "initialized" manually. Starting Cake with the `--bootstrap`-parameter will restore the modules in the `tools/Modules` folder.
 
 
 In summary:
@@ -23,7 +23,7 @@ In summary:
 **Module:**
 
 - Packages are installed before the script is run
-- Needs to be installed by bootstrapper (or equivalent)
+- Needs to be installed by bootstrapping
 - Integrated into Cake directly (including tool resolution)
 - Allows declaring `#tool` directives alongside other packages (i.e. NuGet, DNF, Chocolatey)
 
