@@ -3,7 +3,7 @@ namespace Cake.Npm.Module
     /// <summary>
     /// Constant values used in the module.
     /// </summary>
-    public class Constants
+    public static class Constants
     {
         /// <summary>
         /// The scheme name used in <c>#tools</c> directives supported by this module.

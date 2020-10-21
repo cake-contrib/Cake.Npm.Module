@@ -1,7 +1,5 @@
-using Cake.Core;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
-using Cake.Npm.Module;
 using Cake.Core.Packaging;
 using Cake.Core.Configuration;
 using Cake.Testing;
@@ -17,20 +15,18 @@ namespace Cake.Npm.Module.Tests
     /// </summary>
     internal sealed class NpmPackageInstallerFixture
     {
-        public ICakeEnvironment Environment { get; set; }
-        public IFileSystem FileSystem { get; set; }
         public IProcessRunner ProcessRunner { get; set; }
         public INpmContentResolver ContentResolver { get; set; }
         public ICakeLog Log { get; set; }
 
         public PackageReference Package { get; set; }
-        public PackageType PackageType { get; set; }
+        private PackageType PackageType { get; }
         public DirectoryPath InstallPath { get; set; }
 
-        public ICakeConfiguration Config { get; private set; }
+        public ICakeConfiguration Config { get; }
 
         public IToolLocator ToolLocator { get; }
-        
+
         public Action<IToolLocator> ToolLocatorSetup { get; set; }
 
 
@@ -39,8 +35,6 @@ namespace Cake.Npm.Module.Tests
         /// </summary>
         internal NpmPackageInstallerFixture()
         {
-            Environment = FakeEnvironment.CreateUnixEnvironment();
-            FileSystem = new FakeFileSystem(Environment);
             ProcessRunner = Substitute.For<IProcessRunner>();
             ContentResolver = Substitute.For<INpmContentResolver>();
             Log = new FakeLog();
@@ -58,6 +52,7 @@ namespace Cake.Npm.Module.Tests
         internal NpmPackageInstaller CreateInstaller()
         {
             var setup = ToolLocatorSetup;
+            // ReSharper disable once ConvertIfStatementToNullCoalescingExpression
             if(setup == null)
             {
                 setup = l =>
@@ -69,7 +64,7 @@ namespace Cake.Npm.Module.Tests
 
             setup(ToolLocator);
 
-            return new NpmPackageInstaller(Environment, ProcessRunner, Log, ContentResolver, Config, ToolLocator);
+            return new NpmPackageInstaller(ProcessRunner, Log, ContentResolver, Config, ToolLocator);
         }
 
         /// <summary>
