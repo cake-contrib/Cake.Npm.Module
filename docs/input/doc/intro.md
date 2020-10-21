@@ -1,3 +1,8 @@
+---
+Order: 1
+Title: Introduction
+---
+
 # Cake.Npm.Module
 
 Cake.Npm.Module is a Module for Cake, which extends it with a new `IPackageInstaller` for installing tools using the Node.js package manager (`npm`).

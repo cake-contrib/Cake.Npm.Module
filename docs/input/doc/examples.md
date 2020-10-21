@@ -1,3 +1,8 @@
+---
+Order: 4
+Title: Examples
+---
+
 # Examples
 
 Installing a tool using the Npm Cake Module is as simple as:

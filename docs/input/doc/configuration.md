@@ -1,3 +1,8 @@
+---
+Order: 5
+Title: Configuration
+---
+
 # Configuration
 
 As mentioned in the parameters section, it is possible to specify the specific source that is used when installing a tool. If you always use the same alternative source, doing this for each source can become unwieldy. Instead, it is possible to configure a default source which is used for all tool installations made by the Cake.Npm.Module.
