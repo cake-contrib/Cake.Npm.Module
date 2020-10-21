@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
-        <title>Cake.Npm.Module - Introduction</title>
+        <title>Cake.Npm.Module - API - Cake.Npm.Module Namespace</title>
         <link href="/Cake.Npm.Module/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -56,8 +56,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">                            
-                                    <li class="active"><a href="/Cake.Npm.Module/doc">Documentation</a></li>
-        <li><a href="/Cake.Npm.Module/api">API</a></li>
+                                    <li><a href="/Cake.Npm.Module/doc">Documentation</a></li>
+        <li class="active"><a href="/Cake.Npm.Module/api">API</a></li>
  
                         </ul>       
                     </div>
@@ -71,26 +71,77 @@
             <aside class="main-sidebar ">
                 <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
                     	
-        <div><p><a href="https://github.com/cake-contrib/Cake.Npm.Module/tree/develop/docs/input/doc/intro.md"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Content</a></p></div>
-    <div id="infobar-headings"><h6>On This Page</h6><p><a href="#cake.npm.module">Cake.Npm.Module</a></p>
+	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#ClassTypes">Class Types</a></p>
+<p><a href="#InterfaceTypes">Interface Types</a></p>
 <hr class="infobar-hidden">
 </div>
 
                 </section>
                 <section class="sidebar">    
                                      
-                    
+                    	
+	    <script src="/Cake.Npm.Module/assets/js/lunr.min.js"></script>
+    <script src="/Cake.Npm.Module/assets/js/searchIndex.js"></script>
+    <div class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search Types...">
+            <span class="input-group-btn">
+                <button class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    <div id="search-results">
+    </div>
+    <script>
+        function runSearch(query){
+            $("#search-results").empty();			
+            if( query.length < 2 ){
+                return;
+            }			
+            var results = searchModule.search("*" + query + "*");
+            var listHtml = "<ul class='sidebar-menu'>";	
+            listHtml += "<li class='header'>Type Results</li>";	
+            if(results.length == 0 ){
+                listHtml += "<li>No results found</li>";
+            } else {					
+                for(var i = 0; i < results.length; ++i){
+                    var res = results[i];
+                    listHtml += "<li><a href='" + res.url + "'>" + htmlEscape(res.title) + "</a></li>";
+                }				
+            }
+            listHtml += "</ul>";				
+            $("#search-results").append(listHtml);
+        }
+
+        $(document).ready(function(){
+            $("#search").on('input propertychange paste', function() {
+                runSearch($("#search").val());
+            });
+        });
+
+        function htmlEscape(html) {
+            return document.createElement('div')
+                .appendChild(document.createTextNode(html))
+                .parentNode
+                .innerHTML;
+        }
+    </script>
+	
+    <hr>
 
                     <ul class="sidebar-menu">
                         
+	<li class="header">Namespaces</li>   
 
-                <li class="selected"><a href="/Cake.Npm.Module/doc/intro">Introduction</a></li>
-                <li><a href="/Cake.Npm.Module/doc/install">Installation</a></li>
-                <li><a href="/Cake.Npm.Module/doc/parameters">Parameters</a></li>
-                <li><a href="/Cake.Npm.Module/doc/examples">Examples</a></li>
-                <li><a href="/Cake.Npm.Module/doc/configuration">Configuration</a></li>
-                <li><a href="/Cake.Npm.Module/doc/contributing">Contributing</a></li>
-                <li><a href="/Cake.Npm.Module/doc/cake-npm">Module or Addin</a></li>
+				<li class="treeview active">
+				<a href="/Cake.Npm.Module/api/Cake">Cake</a> <a href="#" class="expand"></a>
+				<ul class="treeview-menu">
+			
+				<li class="treeview active">
+				<a href="/Cake.Npm.Module/api/Cake.Npm">Cake<wbr>.Npm</a> <a href="#" class="expand"></a>
+				<ul class="treeview-menu">
+						<li class=" selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
+</ul></li></ul></li>      
 
                     </ul>
                             
@@ -103,15 +154,77 @@
 
 
 
-		<section class="content-header">
-			<h1>Introduction</h1>
-		</section>
-	<section class="content">
-		<h1 id="cake.npm.module">Cake.Npm.Module</h1>
-<p>Cake.Npm.Module is a Module for Cake, which extends it with a new <code>IPackageInstaller</code> for installing tools using the Node.js package manager (<code>npm</code>).</p>
-<p>npm is the package manager for JavaScript and the default for Node.js. Npm consists of both the <code>npm</code> client and the npm registry available at <code>npmjs.org</code>. This module supports basic package installation including specific versions, tags, install behaviour and custom registries.</p>
+<section class="content-header">
+	<h1>Cake<wbr>.Npm<wbr>.Module <small>Namespace</small></h1>
+</section>
+<section class="content">
+	
+	
+	
 
-	</section>
+
+			<h1 id="ClassTypes">Class Types</h1>
+			<div class="box">
+				<div class="box-body no-padding table-responsive">
+					<table class="table table-striped table-hover two-cols">
+						<thead>
+							<tr>
+								<th>Class</th>
+									<th>Summary</th>
+							</tr>
+						</thead>
+							<tbody><tr>
+								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/Constants">Constants</a></td>
+									<td>
+    Constant values used in the module.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></td>
+									<td>
+    A content resolver for packages installed with the npm package manager.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule">NpmModule</a></td>
+									<td>
+    Module type to add support for the npm package manager.
+    </td>
+							</tr>
+							<tr>
+								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></td>
+									<td>
+    <code class="cs">IPackageInstaller</code> implementation for the npm package manager.
+    </td>
+							</tr>
+					</tbody></table>
+				</div>
+			</div>
+		
+
+			<h1 id="InterfaceTypes">Interface Types</h1>
+			<div class="box">
+				<div class="box-body no-padding table-responsive">
+					<table class="table table-striped table-hover two-cols">
+						<thead>
+							<tr>
+								<th>Interface</th>
+									<th>Summary</th>
+							</tr>
+						</thead>
+							<tbody><tr>
+								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></td>
+									<td>
+    Represents a content resolver for packages installed with the npm package manager.
+    </td>
+							</tr>
+					</tbody></table>
+				</div>
+			</div>
+		
+
+	
+</section>
                 
             </div>           
             

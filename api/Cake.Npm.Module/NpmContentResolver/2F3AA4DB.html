@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
-        <title>Cake.Npm.Module - Introduction</title>
+        <title>Cake.Npm.Module - API - NpmContentResolver.GetFiles(PackageReference, PackageType, bool) Method</title>
         <link href="/Cake.Npm.Module/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -56,8 +56,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">                            
-                                    <li class="active"><a href="/Cake.Npm.Module/doc">Documentation</a></li>
-        <li><a href="/Cake.Npm.Module/api">API</a></li>
+                                    <li><a href="/Cake.Npm.Module/doc">Documentation</a></li>
+        <li class="active"><a href="/Cake.Npm.Module/api">API</a></li>
  
                         </ul>       
                     </div>
@@ -71,26 +71,78 @@
             <aside class="main-sidebar ">
                 <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
                     	
-        <div><p><a href="https://github.com/cake-contrib/Cake.Npm.Module/tree/develop/docs/input/doc/intro.md"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Content</a></p></div>
-    <div id="infobar-headings"><h6>On This Page</h6><p><a href="#cake.npm.module">Cake.Npm.Module</a></p>
+	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#Summary">Summary</a></p>
+<p><a href="#Syntax">Syntax</a></p>
+<p><a href="#Parameters">Parameters</a></p>
+<p><a href="#ReturnValue">Return Value</a></p>
 <hr class="infobar-hidden">
 </div>
 
                 </section>
                 <section class="sidebar">    
                                      
-                    
+                    	
+	    <script src="/Cake.Npm.Module/assets/js/lunr.min.js"></script>
+    <script src="/Cake.Npm.Module/assets/js/searchIndex.js"></script>
+    <div class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search Types...">
+            <span class="input-group-btn">
+                <button class="btn btn-flat"><i class="fa fa-search"></i></button>
+            </span>
+        </div>
+    </div>
+    <div id="search-results">
+    </div>
+    <script>
+        function runSearch(query){
+            $("#search-results").empty();			
+            if( query.length < 2 ){
+                return;
+            }			
+            var results = searchModule.search("*" + query + "*");
+            var listHtml = "<ul class='sidebar-menu'>";	
+            listHtml += "<li class='header'>Type Results</li>";	
+            if(results.length == 0 ){
+                listHtml += "<li>No results found</li>";
+            } else {					
+                for(var i = 0; i < results.length; ++i){
+                    var res = results[i];
+                    listHtml += "<li><a href='" + res.url + "'>" + htmlEscape(res.title) + "</a></li>";
+                }				
+            }
+            listHtml += "</ul>";				
+            $("#search-results").append(listHtml);
+        }
+
+        $(document).ready(function(){
+            $("#search").on('input propertychange paste', function() {
+                runSearch($("#search").val());
+            });
+        });
+
+        function htmlEscape(html) {
+            return document.createElement('div')
+                .appendChild(document.createTextNode(html))
+                .parentNode
+                .innerHTML;
+        }
+    </script>
+	
+    <hr>
 
                     <ul class="sidebar-menu">
                         
+			<li class="header">Namespace</li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
+		<li class="header">Type</li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Constructors</li>
+				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/080F0AED">NpmContentResolver<wbr>(IFileSystem, <wbr>ICakeEnvironment, <wbr>IGlobber, <wbr>ICakeLog)<wbr></a></li>
+			<li class="header">Method Members</li>
+				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/2F3AA4DB">GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>bool)<wbr></a></li>
 
-                <li class="selected"><a href="/Cake.Npm.Module/doc/intro">Introduction</a></li>
-                <li><a href="/Cake.Npm.Module/doc/install">Installation</a></li>
-                <li><a href="/Cake.Npm.Module/doc/parameters">Parameters</a></li>
-                <li><a href="/Cake.Npm.Module/doc/examples">Examples</a></li>
-                <li><a href="/Cake.Npm.Module/doc/configuration">Configuration</a></li>
-                <li><a href="/Cake.Npm.Module/doc/contributing">Contributing</a></li>
-                <li><a href="/Cake.Npm.Module/doc/cake-npm">Module or Addin</a></li>
 
                     </ul>
                             
@@ -103,15 +155,90 @@
 
 
 
-		<section class="content-header">
-			<h1>Introduction</h1>
-		</section>
-	<section class="content">
-		<h1 id="cake.npm.module">Cake.Npm.Module</h1>
-<p>Cake.Npm.Module is a Module for Cake, which extends it with a new <code>IPackageInstaller</code> for installing tools using the Node.js package manager (<code>npm</code>).</p>
-<p>npm is the package manager for JavaScript and the default for Node.js. Npm consists of both the <code>npm</code> client and the npm registry available at <code>npmjs.org</code>. This module supports basic package installation including specific versions, tags, install behaviour and custom registries.</p>
+<section class="content-header">
+			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a>.</h3>
+	<h1>GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>bool)<wbr> <small>Method</small></h1>
+</section>
+<section class="content">
+	
+	
+		<h1 id="Summary">Summary</h1>
+	<div class="lead">
+    Returns the files installed by the given package
+    </div>
 
-	</section>
+		<div class="panel panel-default">
+  			<div class="panel-body">	
+				<dl class="dl-horizontal">	
+						
+						<dt>Namespace</dt>
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></dd>
+					
+						<dt>Containing Type</dt>
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></dd>		
+					
+				</dl>
+  			</div>
+		</div>
+
+	<h1 id="Syntax">Syntax</h1>
+	<pre><code>public IReadOnlyCollection&lt;IFile&gt; GetFiles(PackageReference package, PackageType type, bool isGlobal)</code></pre>
+
+
+
+
+
+	<h1 id="Parameters">Parameters</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover three-cols">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+					<tbody><tr>
+						<td>package</td>
+						<td>PackageReference</td>
+						<td>The package.</td>
+					</tr>
+					<tr>
+						<td>type</td>
+						<td>PackageType</td>
+						<td>The package type.</td>
+					</tr>
+					<tr>
+						<td>isGlobal</td>
+						<td>bool</td>
+						<td>Whether the package is globally installed.</td>
+					</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
+	<h1 id="ReturnValue">Return Value</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody><tr>
+					<td>IReadOnlyCollection<wbr>&lt;IFile&gt;<wbr></td>
+					<td></td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
+
+	
+</section>
                 
             </div>           
             
