@@ -39,20 +39,6 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"Constants",
-            content:"Constants",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
-            title:"Constants",
-            description:""
-        }
-    );
-    a(
-        {
-            id:1,
             title:"NpmContentResolver",
             content:"NpmContentResolver",
             description:'',
@@ -66,7 +52,7 @@ var searchModule = function() {
     );
     a(
         {
-            id:2,
+            id:1,
             title:"INpmContentResolver",
             content:"INpmContentResolver",
             description:'',
@@ -80,7 +66,7 @@ var searchModule = function() {
     );
     a(
         {
-            id:3,
+            id:2,
             title:"NpmModule",
             content:"NpmModule",
             description:'',
@@ -89,6 +75,20 @@ var searchModule = function() {
         {
             url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
             title:"NpmModule",
+            description:""
+        }
+    );
+    a(
+        {
+            id:3,
+            title:"Constants",
+            content:"Constants",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
+            title:"Constants",
             description:""
         }
     );

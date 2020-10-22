@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
-        <title>Cake.Npm.Module - API - NpmContentResolver.NpmContentResolver(IFileSystem, ICakeEnvironment, IGlobber, ICakeLog) Constructor</title>
+        <title>Cake.Npm.Module - API - NpmPackageInstaller.NpmPackageInstaller(IProcessRunner, ICakeLog, INpmContentResolver, ICakeConfiguration, IToolLocator) Constructor</title>
         <link href="/Cake.Npm.Module/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -136,12 +136,13 @@
 			<li class="header">Namespace</li>
 		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
 		<li class="header">Type</li>
-		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></li>
 		<li role="separator" class="divider"></li>
 			<li class="header">Constructors</li>
-				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/080F0AED">NpmContentResolver<wbr>(IFileSystem, <wbr>ICakeEnvironment, <wbr>IGlobber, <wbr>ICakeLog)<wbr></a></li>
+				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/9840B773">NpmPackageInstaller<wbr>(IProcessRunner, <wbr>ICakeLog, <wbr>I<wbr>Npm<wbr>Content<wbr>Resolver, <wbr>ICakeConfiguration, <wbr>IToolLocator)<wbr></a></li>
 			<li class="header">Method Members</li>
-				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/2F3AA4DB">GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>bool)<wbr></a></li>
+				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/5839DF25">CanInstall<wbr>(PackageReference, <wbr>PackageType)<wbr></a></li>
+				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/CF7C2E01">Install<wbr>(PackageReference, <wbr>PackageType, <wbr>DirectoryPath)<wbr></a></li>
 
 
                     </ul>
@@ -156,15 +157,15 @@
 
 
 <section class="content-header">
-			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a>.</h3>
-	<h1>NpmContentResolver<wbr>(IFileSystem, <wbr>ICakeEnvironment, <wbr>IGlobber, <wbr>ICakeLog)<wbr> <small>Constructor</small></h1>
+			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a>.</h3>
+	<h1>NpmPackageInstaller<wbr>(IProcessRunner, <wbr>ICakeLog, <wbr>I<wbr>Npm<wbr>Content<wbr>Resolver, <wbr>ICakeConfiguration, <wbr>IToolLocator)<wbr> <small>Constructor</small></h1>
 </section>
 <section class="content">
 	
 	
 		<h1 id="Summary">Summary</h1>
 	<div class="lead">
-    Initializes a new instance of the <code class="cs"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></code> type.
+    Initializes a new instance of the <code class="cs"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></code> type.
     </div>
 
 		<div class="panel panel-default">
@@ -175,14 +176,14 @@
 						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></dd>
 					
 						<dt>Containing Type</dt>
-						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></dd>		
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></dd>		
 					
 				</dl>
   			</div>
 		</div>
 
 	<h1 id="Syntax">Syntax</h1>
-	<pre><code>public NpmContentResolver(IFileSystem fileSystem, ICakeEnvironment environment, IGlobber globber, ICakeLog log)</code></pre>
+	<pre><code>public NpmPackageInstaller(IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)</code></pre>
 
 
 
@@ -200,24 +201,29 @@
 					</tr>
 				</thead>
 					<tbody><tr>
-						<td>fileSystem</td>
-						<td>IFileSystem</td>
-						<td>The file system.</td>
-					</tr>
-					<tr>
-						<td>environment</td>
-						<td>ICakeEnvironment</td>
-						<td>The environment.</td>
-					</tr>
-					<tr>
-						<td>globber</td>
-						<td>IGlobber</td>
-						<td>The globber.</td>
+						<td>processRunner</td>
+						<td>IProcessRunner</td>
+						<td>The process runner.</td>
 					</tr>
 					<tr>
 						<td>log</td>
 						<td>ICakeLog</td>
 						<td>The log.</td>
+					</tr>
+					<tr>
+						<td>contentResolver</td>
+						<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></td>
+						<td>The content resolver.</td>
+					</tr>
+					<tr>
+						<td>config</td>
+						<td>ICakeConfiguration</td>
+						<td>The configuration.</td>
+					</tr>
+					<tr>
+						<td>toolLocator</td>
+						<td>IToolLocator</td>
+						<td>The ToolLocator.</td>
 					</tr>
 			</tbody></table>
 		</div>
