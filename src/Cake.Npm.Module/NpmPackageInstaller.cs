@@ -17,7 +17,6 @@ namespace Cake.Npm.Module
     /// </summary>
     public class NpmPackageInstaller : IPackageInstaller
     {
-        private readonly ICakeEnvironment _environment;
         private readonly IProcessRunner _processRunner;
         private readonly ICakeLog _log;
         private readonly INpmContentResolver _contentResolver;
@@ -31,34 +30,14 @@ namespace Cake.Npm.Module
         /// <param name="log">The log.</param>
         /// <param name="contentResolver">The content resolver.</param>
         /// <param name="config">The configuration.</param>
-        public NpmPackageInstaller(ICakeEnvironment environment, IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)
+        /// <param name="toolLocator">The ToolLocator.</param>
+        public NpmPackageInstaller(IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)
         {
-            if (environment == null)
-            {
-                throw new ArgumentNullException(nameof(environment));
-            }
-
-            if (processRunner == null)
-            {
-                throw new ArgumentNullException(nameof(processRunner));
-            }
-
-            if (log == null)
-            {
-                throw new ArgumentNullException(nameof(log));
-            }
-
-            if (contentResolver == null)
-            {
-                throw new ArgumentNullException(nameof(contentResolver));
-            }
-
-            _environment = environment;
-            _processRunner = processRunner;
-            _log = log;
-            _contentResolver = contentResolver;
-            _config = config;
-            _toolLocator = toolLocator;
+            _processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));
+            _log = log ?? throw new ArgumentNullException(nameof(log));
+            _contentResolver = contentResolver ?? throw new ArgumentNullException(nameof(contentResolver));
+            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _toolLocator = toolLocator ?? throw new ArgumentNullException(nameof(toolLocator));
         }
 
         /// <summary>
@@ -95,7 +74,7 @@ namespace Cake.Npm.Module
             }
 
             // find npm
-            _log.Debug("looking for npm.cmd"); 
+            _log.Debug("looking for npm.cmd");
             var npmTool = _toolLocator.Resolve("npm.cmd");
 
             if (npmTool == null)
@@ -232,8 +211,6 @@ namespace Cake.Npm.Module
                                 break;
                             case "bundle":
                                 arguments.Append("--save-bundle");
-                                break;
-                            default:
                                 break;
                         }
                     }

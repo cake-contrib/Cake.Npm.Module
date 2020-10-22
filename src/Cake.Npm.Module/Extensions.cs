@@ -17,7 +17,7 @@ namespace Cake.Npm.Module
             return value;
         }
 
-        internal static bool HasValue(this PackageReference package, string key) {
+        private static bool HasValue(this PackageReference package, string key) {
             return package.Parameters.ContainsKey(key) && string.IsNullOrWhiteSpace(package.Parameters[key].First());
         }
 
@@ -27,14 +27,14 @@ namespace Cake.Npm.Module
             return hasValue;
         }
 
-        internal static string GetValue(this PackageReference package, string key, params char[] trimChars) {
+        private static string GetValue(this PackageReference package, string key, params char[] trimChars) {
             var hasValue = package.HasValue(key);
             if (!hasValue) return string.Empty;
             var value = package.Parameters[key].FirstOrDefault();
             return value != null && trimChars.Any()
                 ? value.Trim(trimChars)
                 : value;
-                
+
         }
     }
 }
