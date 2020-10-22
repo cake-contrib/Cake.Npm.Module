@@ -62,7 +62,7 @@ namespace Cake.Npm.Module.Tests
 
         public sealed class TheCanInstallMethod
         {
-            private string NPM_CONFIGKEY = "NPM_Source";
+            private const string NPM_CONFIGKEY = "NPM_Source";
 
             [Fact]
             public void Should_Throw_If_URI_Is_Null()

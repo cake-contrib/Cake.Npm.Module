@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Cake.Core;
+using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
-using Cake.Core.Diagnostics;
 using JetBrains.Annotations;
 
 namespace Cake.Npm.Module
@@ -21,7 +21,7 @@ namespace Cake.Npm.Module
         private readonly ICakeLog _log;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NpmContentResolver"/> type.
+        /// Initializes a new instance of the <see cref="NpmContentResolver"/> class.
         /// </summary>
         /// <param name="fileSystem">The file system.</param>
         /// <param name="environment">The environment.</param>
@@ -34,12 +34,12 @@ namespace Cake.Npm.Module
         }
 
         /// <summary>
-        /// Returns the files installed by the given package
+        /// Returns the files installed by the given package.
         /// </summary>
         /// <param name="package">The package.</param>
         /// <param name="type">The package type.</param>
         /// <param name="isGlobal">Whether the package is globally installed.</param>
-        /// <returns></returns>
+        /// <returns>The files installed by the given package.</returns>
         public IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, bool isGlobal)
         {
             if (type == PackageType.Addin)
@@ -71,7 +71,7 @@ namespace Cake.Npm.Module
                 _log.Verbose("Using local install path: " + modulesPath?.FullPath);
             }
 
-            if (modulesPath == null || !(_fileSystem.GetDirectory(modulesPath).Exists))
+            if (modulesPath == null || !_fileSystem.GetDirectory(modulesPath).Exists)
             {
                 throw new System.IO.DirectoryNotFoundException("Could not determine install path!");
             }
