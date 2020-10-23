@@ -9,12 +9,14 @@ using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
 using Cake.Core.Tooling;
+using JetBrains.Annotations;
 
 namespace Cake.Npm.Module
 {
     /// <summary>
     /// <see cref="IPackageInstaller"/> implementation for the npm package manager.
     /// </summary>
+    [UsedImplicitly]
     public class NpmPackageInstaller : IPackageInstaller
     {
         private readonly IProcessRunner _processRunner;
@@ -24,7 +26,7 @@ namespace Cake.Npm.Module
         private readonly IToolLocator _toolLocator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NpmPackageInstaller"/> type.
+        /// Initializes a new instance of the <see cref="NpmPackageInstaller"/> class.
         /// </summary>
         /// <param name="processRunner">The process runner.</param>
         /// <param name="log">The log.</param>
@@ -113,6 +115,7 @@ namespace Cake.Npm.Module
             }
 
             _log.Warning("Could not determine installed package files! Installation may not be complete.");
+
             // TODO: maybe some warnings here
             return result;
         }
@@ -130,9 +133,12 @@ namespace Cake.Npm.Module
                 arguments.Append("--verbose");
             }
 
-            if (definition.Address != null) {
+            if (definition.Address != null)
+            {
                 arguments.Append($"--registry \"{definition.Address}\"");
-            } else {
+            }
+            else
+            {
                 var npmSource = config.GetValue(Constants.ConfigKey);
                 if (!string.IsNullOrWhiteSpace(npmSource))
                 {
@@ -171,6 +177,7 @@ namespace Cake.Npm.Module
             {
                 packageString.Append(source.Trim(':') + ":");
             }
+
             if (definition.HasValue("scope", out string scope))
             {
                 packageString.Append("@" + scope.Trim('@') + "/");
@@ -189,33 +196,32 @@ namespace Cake.Npm.Module
 
         private void GetSaveArguments(ProcessArgumentBuilder arguments, PackageReference definition)
         {
-                var values = definition.Parameters["save"].ToList();
-                foreach (var value in values)
+            var values = definition.Parameters["save"].ToList();
+            foreach (var value in values)
+            {
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    if (string.IsNullOrWhiteSpace(value))
-                    {
-                        arguments.Append("--save");
-                    }
-                    else
-                    {
-                        switch (value)
-                        {
-                            case "dev":
-                                arguments.Append("--save-dev");
-                                break;
-                            case "optional":
-                                arguments.Append("--save-optional");
-                                break;
-                            case "exact":
-                                arguments.Append("--save-exact");
-                                break;
-                            case "bundle":
-                                arguments.Append("--save-bundle");
-                                break;
-                        }
-                    }
-
+                    arguments.Append("--save");
                 }
+                else
+                {
+                    switch (value)
+                    {
+                        case "dev":
+                            arguments.Append("--save-dev");
+                            break;
+                        case "optional":
+                            arguments.Append("--save-optional");
+                            break;
+                        case "exact":
+                            arguments.Append("--save-exact");
+                            break;
+                        case "bundle":
+                            arguments.Append("--save-bundle");
+                            break;
+                    }
+                }
+            }
         }
     }
 }

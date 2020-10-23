@@ -10,12 +10,12 @@ namespace Cake.Npm.Module
     public interface INpmContentResolver
     {
         /// <summary>
-        /// Returns the files installed by the given package
+        /// Returns the files installed by the given package.
         /// </summary>
         /// <param name="package">The package.</param>
         /// <param name="type">The package type.</param>
         /// <param name="isGlobal">Whether the package is globally installed.</param>
-        /// <returns></returns>
+        /// <returns>the files installed by the given package.</returns>
          IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, bool isGlobal);
     }
 }

@@ -16,9 +16,11 @@ namespace Cake.Npm.Module
         /// <inheritdoc />
         public void Register(ICakeContainerRegistrar registrar)
         {
-            if (registrar == null) {
+            if (registrar == null)
+            {
                 throw new ArgumentNullException(nameof(registrar));
             }
+
             registrar.RegisterType<NpmContentResolver>().As<INpmContentResolver>();
             registrar.RegisterType<NpmPackageInstaller>().As<IPackageInstaller>();
         }

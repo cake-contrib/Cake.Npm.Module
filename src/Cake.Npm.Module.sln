@@ -8,9 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.Npm.Module.Tests", "Ca
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F23643AA-6CD1-4E71-BDD2-DBD058F6CB73}"
 	ProjectSection(SolutionItems) = preProject
-		..\build.cake = ..\build.cake
 		..\README.md = ..\README.md
-		..\RelaseNotes.md = ..\RelaseNotes.md
 	EndProjectSection
 EndProject
 Global
