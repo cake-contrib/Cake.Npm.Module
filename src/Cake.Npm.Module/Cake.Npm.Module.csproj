@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AssemblyName>Cake.Npm.Module</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Cake.Npm.Module</PackageId>
+    <StartYear>2017</StartYear>
+    <EndYear>$([System.DateTime]::Today.Year)</EndYear>
+    <FullYear Condition="'$(StartYear)'=='$(EndYear)'">$(StartYear)</FullYear>
+    <FullYear Condition="'$(StartYear)'!='$(EndYear)'">$(StartYear)-$(EndYear)</FullYear>
+
+    <!-- Properties related to packaging -->
+    <Authors>Alistair Chapman</Authors>
+    <Copyright>Alistair Chapman $(FullYear)</Copyright>
+    <Title>Cake npm Module</Title>
+    <Description>This Cake module adds support for the npm package manager when installing tools in your Cake build scripts.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/cake-contrib/Cake.Npm.Module</PackageProjectUrl>
+    <PackageTags>cake;build;ci;build;npm;node</PackageTags>
+    <RepositoryUrl>https://github.com/cake-contrib/Cake.Npm.Module.git</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/cake-contrib/Cake.Npm.Module/releases</PackageReleaseNotes>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
+    <PackageIcon>$(CakeContribGuidelinesIconDestinationLocation)</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)/stylecop.json" Link="stylecop.json"/>
+    <None Include="$(SolutionDir)/.editorconfig" Link=".editorconfig"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="all"/>
+    <PackageReference Include="CakeContrib.Guidelines" Version="0.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
