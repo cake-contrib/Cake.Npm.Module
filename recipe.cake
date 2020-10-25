@@ -7,7 +7,6 @@ BuildParameters.SetParameters(
   buildSystem: BuildSystem,
   sourceDirectoryPath: "./src",
   title: "Cake.Npm.Module",
-  masterBranchName: "main",
   repositoryOwner: "cake-contrib",
   shouldRunDotNetCorePack: true,
   shouldUseDeterministicBuilds: true);
