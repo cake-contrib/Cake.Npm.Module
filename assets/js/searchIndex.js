@@ -81,20 +81,6 @@ var searchModule = function() {
     a(
         {
             id:3,
-            title:"INpmContentResolver",
-            content:"INpmContentResolver",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
-            title:"INpmContentResolver",
-            description:""
-        }
-    );
-    a(
-        {
-            id:4,
             title:"NpmContentResolver",
             content:"NpmContentResolver",
             description:'',
@@ -103,6 +89,20 @@ var searchModule = function() {
         {
             url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
             title:"NpmContentResolver",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
+            title:"INpmContentResolver",
+            content:"INpmContentResolver",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
+            title:"INpmContentResolver",
             description:""
         }
     );
