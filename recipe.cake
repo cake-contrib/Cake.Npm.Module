@@ -1,6 +1,8 @@
-#load nuget:?package=Cake.Recipe&version=2.0.1
+#load nuget:?package=Cake.Recipe&version=2.1.0
 
 Environment.SetVariableNames();
+
+var standardNotificationMessage = "Version {0} of {1} has just been released, this will be available here https://www.nuget.org/packages/{1}, once package indexing is complete.";
 
 BuildParameters.SetParameters(
   context: Context,
@@ -9,7 +11,9 @@ BuildParameters.SetParameters(
   title: "Cake.Npm.Module",
   repositoryOwner: "cake-contrib",
   shouldRunDotNetCorePack: true,
-  shouldUseDeterministicBuilds: true);
+  shouldUseDeterministicBuilds: true,
+  gitterMessage: "@/all " + standardNotificationMessage,
+  twitterMessage: standardNotificationMessage);
 
 BuildParameters.PrintParameters(Context);
 
