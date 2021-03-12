@@ -39,20 +39,6 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"NpmContentResolver",
-            content:"NpmContentResolver",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
-            title:"NpmContentResolver",
-            description:""
-        }
-    );
-    a(
-        {
-            id:1,
             title:"NpmPackageInstaller",
             content:"NpmPackageInstaller",
             description:'',
@@ -66,21 +52,21 @@ var searchModule = function() {
     );
     a(
         {
-            id:2,
-            title:"NpmModule",
-            content:"NpmModule",
+            id:1,
+            title:"Constants",
+            content:"Constants",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
-            title:"NpmModule",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
+            title:"Constants",
             description:""
         }
     );
     a(
         {
-            id:3,
+            id:2,
             title:"INpmContentResolver",
             content:"INpmContentResolver",
             description:'',
@@ -94,15 +80,29 @@ var searchModule = function() {
     );
     a(
         {
-            id:4,
-            title:"Constants",
-            content:"Constants",
+            id:3,
+            title:"NpmModule",
+            content:"NpmModule",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
-            title:"Constants",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
+            title:"NpmModule",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
+            title:"NpmContentResolver",
+            content:"NpmContentResolver",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
+            title:"NpmContentResolver",
             description:""
         }
     );
