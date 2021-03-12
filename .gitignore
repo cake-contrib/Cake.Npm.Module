@@ -288,3 +288,4 @@ tools/**
 
 [Bb]uild[Aa]rtifacts/
 /src/Cake.Npm.Module/icon.png
+.history/
