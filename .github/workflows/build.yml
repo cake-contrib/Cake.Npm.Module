@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v
+        uses: actions/checkout@v2
       - name: Fetch all tags and branches
         run: git fetch --prune --unshallow
       - name: Cache Tools
