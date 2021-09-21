@@ -1,3 +1,4 @@
+using Cake.Core;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
@@ -16,11 +17,15 @@ namespace Cake.Npm.Module.Tests
     internal sealed class NpmPackageInstallerFixture
     {
         public IProcessRunner ProcessRunner { get; set; }
+
         public INpmContentResolver ContentResolver { get; set; }
+
         public ICakeLog Log { get; set; }
 
         public PackageReference Package { get; set; }
+
         private PackageType PackageType { get; }
+
         public DirectoryPath InstallPath { get; set; }
 
         public ICakeConfiguration Config { get; }
@@ -28,6 +33,11 @@ namespace Cake.Npm.Module.Tests
         public IToolLocator ToolLocator { get; }
 
         public Action<IToolLocator> ToolLocatorSetup { get; set; }
+
+        public ICakeEnvironment Environment { get; set; }
+
+        public IFileSystem FileSystem { get; set; }
+
 
 
         /// <summary>
@@ -38,6 +48,8 @@ namespace Cake.Npm.Module.Tests
             ProcessRunner = Substitute.For<IProcessRunner>();
             ContentResolver = Substitute.For<INpmContentResolver>();
             Log = new FakeLog();
+            Environment = new FakeEnvironment(PlatformFamily.Linux) {WorkingDirectory = "/tmp"};
+            FileSystem = new FakeFileSystem(Environment);
             Config = Substitute.For<ICakeConfiguration>();
             Package = new PackageReference("npm:?package=yo");
             PackageType = PackageType.Addin;
@@ -64,7 +76,14 @@ namespace Cake.Npm.Module.Tests
 
             setup(ToolLocator);
 
-            return new NpmPackageInstaller(ProcessRunner, Log, ContentResolver, Config, ToolLocator);
+            return new NpmPackageInstaller(
+                ProcessRunner,
+                Log,
+                ContentResolver,
+                Config,
+                ToolLocator,
+                Environment,
+                FileSystem);
         }
 
         /// <summary>
