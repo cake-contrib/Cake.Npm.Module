@@ -39,28 +39,28 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"Constants",
-            content:"Constants",
+            title:"NpmModule",
+            content:"NpmModule",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
-            title:"Constants",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
+            title:"NpmModule",
             description:""
         }
     );
     a(
         {
             id:1,
-            title:"NpmContentResolver",
-            content:"NpmContentResolver",
+            title:"NpmPackageInstaller",
+            content:"NpmPackageInstaller",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
-            title:"NpmContentResolver",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
+            title:"NpmPackageInstaller",
             description:""
         }
     );
@@ -81,28 +81,28 @@ var searchModule = function() {
     a(
         {
             id:3,
-            title:"NpmModule",
-            content:"NpmModule",
+            title:"NpmContentResolver",
+            content:"NpmContentResolver",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
-            title:"NpmModule",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
+            title:"NpmContentResolver",
             description:""
         }
     );
     a(
         {
             id:4,
-            title:"NpmPackageInstaller",
-            content:"NpmPackageInstaller",
+            title:"Constants",
+            content:"Constants",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
-            title:"NpmPackageInstaller",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
+            title:"Constants",
             description:""
         }
     );
