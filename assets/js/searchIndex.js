@@ -53,20 +53,6 @@ var searchModule = function() {
     a(
         {
             id:1,
-            title:"NpmPackageInstaller",
-            content:"NpmPackageInstaller",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
-            title:"NpmPackageInstaller",
-            description:""
-        }
-    );
-    a(
-        {
-            id:2,
             title:"INpmContentResolver",
             content:"INpmContentResolver",
             description:'',
@@ -75,6 +61,20 @@ var searchModule = function() {
         {
             url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
             title:"INpmContentResolver",
+            description:""
+        }
+    );
+    a(
+        {
+            id:2,
+            title:"NpmPackageInstaller",
+            content:"NpmPackageInstaller",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
+            title:"NpmPackageInstaller",
             description:""
         }
     );

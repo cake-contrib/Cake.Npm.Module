@@ -114,7 +114,7 @@
 <pre><code>#module nuget:?package=Cake.Npm.Module&amp;version=&lt;version&gt;
 </code></pre>
 </li>
-<li><p>Run the build with argument <code>--bootstrap</code> (i.e. <code>./build.ps1 --bootrap</code>).</p>
+<li><p>For Cake versions before <code>1.0.0</code>, run the build with argument <code>--bootstrap</code> (i.e. <code>./build.ps1 --bootrap</code>).</p>
 <p>This will restore the module assembly into the <code>tools/Modules</code> folder</p>
 </li>
 <li><p>Run the build as normal. During Cake's execution, it will recognise the module assembly which has been restored into the <code>tools/Modules</code> folder, and load it.</p>
