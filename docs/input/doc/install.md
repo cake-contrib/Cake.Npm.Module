@@ -12,7 +12,7 @@ Due to the fact that Cake Modules are extending and altering the internals of Ca
    ```
    #module nuget:?package=Cake.Npm.Module&version=<version>
    ```
-1. Run the build with argument `--bootstrap` (i.e. `./build.ps1 --bootrap`).
+1. For Cake versions before `1.0.0`, run the build with argument `--bootstrap` (i.e. `./build.ps1 --bootrap`).
 
    This will restore the module assembly into the `tools/Modules` folder
 1. Run the build as normal. During Cake's execution, it will recognise the module assembly which has been restored into the `tools/Modules` folder, and load it.

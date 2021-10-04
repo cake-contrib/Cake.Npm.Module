@@ -29,4 +29,4 @@ or to tell npm to use a SemVer-compliant range
 #tool npm:?package=sax&version=">=0.1.0 <0.2.0"
 ```
 
-Full parameter information is covered in the [parameters documentation](parameters.md).
+Full parameter information is covered in the [parameters documentation](parameters).
