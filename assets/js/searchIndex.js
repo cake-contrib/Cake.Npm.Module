@@ -39,20 +39,6 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"NpmPackageInstaller",
-            content:"NpmPackageInstaller",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
-            title:"NpmPackageInstaller",
-            description:""
-        }
-    );
-    a(
-        {
-            id:1,
             title:"Constants",
             content:"Constants",
             description:'',
@@ -66,15 +52,29 @@ var searchModule = function() {
     );
     a(
         {
-            id:2,
-            title:"NpmModule",
-            content:"NpmModule",
+            id:1,
+            title:"NpmPackageInstaller",
+            content:"NpmPackageInstaller",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
-            title:"NpmModule",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
+            title:"NpmPackageInstaller",
+            description:""
+        }
+    );
+    a(
+        {
+            id:2,
+            title:"INpmContentResolver",
+            content:"INpmContentResolver",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
+            title:"INpmContentResolver",
             description:""
         }
     );
@@ -95,14 +95,14 @@ var searchModule = function() {
     a(
         {
             id:4,
-            title:"INpmContentResolver",
-            content:"INpmContentResolver",
+            title:"NpmModule",
+            content:"NpmModule",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
-            title:"INpmContentResolver",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
+            title:"NpmModule",
             description:""
         }
     );
