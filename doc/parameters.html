@@ -77,6 +77,7 @@
 <p><a href="#version">Version</a></p>
 <p><a href="#force">Force</a></p>
 <p><a href="#global">Global</a></p>
+<p><a href="#caketool">CakeTool</a></p>
 <p><a href="#save">Save</a></p>
 <p><a href="#source">Source</a></p>
 <p><a href="#scope">Scope</a></p>
@@ -147,6 +148,13 @@
 <h3 id="example-4">Example</h3>
 <pre><code>#tool npm:?package=yo&amp;global
 </code></pre>
+<h1 id="caketool">CakeTool</h1>
+<p>This parameter controls the installation location of the npm package: While the default is the current working directory (unless <a href="#global">global</a> is set),
+setting <code>caketool</code> will set the installation location to inside the <code>tools</code> folder and thus ensure that the installed tools are automatically found as
+tools in Cake.</p>
+<h3 id="example-5">Example</h3>
+<pre><code>#tool npm:?package=yo&amp;caketool
+</code></pre>
 <h1 id="save">Save</h1>
 <p>This corresponds to the <code>--save*</code> options and controls npm's behaviour for saving dependencies. Specifying <code>save</code> with no arguments is equivalent to <code>--save</code>, while providing a value (or multiple parameters) provides fine-grained control.</p>
 <h3 id="examples">Examples</h3>
@@ -158,7 +166,7 @@
 </code></pre>
 <h1 id="source">Source</h1>
 <p>This allows using npm's support for installing directly from some repositories. Supported sources include <code>github</code>, <code>gist</code>, <code>bitbucket</code>, and <code>gitlab</code></p>
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 <pre><code class="language-cs">#tool npm:?package=yeoman/yo&amp;source=github
 // equivalent to npm install github:yeoman/yo
 </code></pre>
@@ -167,7 +175,7 @@
 <div class="alert alert-info"><p><strong>NOTE</strong></p>
 <p>While providing the scope with the package name <em>should</em> work, it's recommended to use this option.</p>
 </div>
-<h3 id="example-6">Example</h3>
+<h3 id="example-7">Example</h3>
 <pre><code class="language-csharp">#tool npm:?package=app-scripts&amp;scope=ionic
 // equivalent to npm install @ionic/app-scripts
 </code></pre>

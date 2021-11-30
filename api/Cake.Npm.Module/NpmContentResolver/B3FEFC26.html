@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
-        <title>Cake.Npm.Module - API - Cake.Npm.Module Namespace</title>
+        <title>Cake.Npm.Module - API - NpmContentResolver.NpmContentResolver(IFileSystem, ICakeEnvironment, ICakeLog, ICakeConfiguration) Constructor</title>
         <link href="/Cake.Npm.Module/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -71,9 +71,10 @@
             <aside class="main-sidebar ">
                 <section class="infobar" data-spy="affix" data-offset-top="60" data-offset-bottom="200"> 
                     	
-	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#ClassTypes">Class Types</a></p>
-<p><a href="#InterfaceTypes">Interface Types</a></p>
-<p><a href="#EnumTypes">Enum Types</a></p>
+	<div id="infobar-headings"><h6>On This Page</h6><p><a href="#Summary">Summary</a></p>
+<p><a href="#Syntax">Syntax</a></p>
+<p><a href="#Parameters">Parameters</a></p>
+<p><a href="#ReturnValue">Return Value</a></p>
 <hr class="infobar-hidden">
 </div>
 
@@ -132,17 +133,16 @@
 
                     <ul class="sidebar-menu">
                         
-	<li class="header">Namespaces</li>   
+			<li class="header">Namespace</li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
+		<li class="header">Type</li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></li>
+		<li role="separator" class="divider"></li>
+			<li class="header">Constructors</li>
+				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/B3FEFC26">NpmContentResolver<wbr>(IFileSystem, <wbr>ICakeEnvironment, <wbr>ICakeLog, <wbr>ICakeConfiguration)<wbr></a></li>
+			<li class="header">Method Members</li>
+				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver/162C1F0C">GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>Modules<wbr>Installation<wbr>Location)<wbr></a></li>
 
-				<li class="treeview active">
-				<a href="/Cake.Npm.Module/api/Cake">Cake</a> <a href="#" class="expand"></a>
-				<ul class="treeview-menu">
-			
-				<li class="treeview active">
-				<a href="/Cake.Npm.Module/api/Cake.Npm">Cake<wbr>.Npm</a> <a href="#" class="expand"></a>
-				<ul class="treeview-menu">
-						<li class=" selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
-</ul></li></ul></li>      
 
                     </ul>
                             
@@ -156,94 +156,91 @@
 
 
 <section class="content-header">
-	<h1>Cake<wbr>.Npm<wbr>.Module <small>Namespace</small></h1>
+			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a>.</h3>
+	<h1>NpmContentResolver<wbr>(IFileSystem, <wbr>ICakeEnvironment, <wbr>ICakeLog, <wbr>ICakeConfiguration)<wbr> <small>Constructor</small></h1>
 </section>
 <section class="content">
 	
 	
-	
+		<h1 id="Summary">Summary</h1>
+	<div class="lead">
+    Initializes a new instance of the <code class="cs"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></code> class.
+    </div>
+
+		<div class="panel panel-default">
+  			<div class="panel-body">	
+				<dl class="dl-horizontal">	
+						
+						<dt>Namespace</dt>
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></dd>
+					
+						<dt>Containing Type</dt>
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></dd>		
+					
+				</dl>
+  			</div>
+		</div>
+
+	<h1 id="Syntax">Syntax</h1>
+	<pre><code>public NpmContentResolver(IFileSystem fileSystem, ICakeEnvironment environment, ICakeLog log, ICakeConfiguration configuration)</code></pre>
 
 
-			<h1 id="ClassTypes">Class Types</h1>
-			<div class="box">
-				<div class="box-body no-padding table-responsive">
-					<table class="table table-striped table-hover two-cols">
-						<thead>
-							<tr>
-								<th>Class</th>
-									<th>Summary</th>
-							</tr>
-						</thead>
-							<tbody><tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/Constants">Constants</a></td>
-									<td>
-    Constant values used in the module.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver">NpmContentResolver</a></td>
-									<td>
-    A content resolver for packages installed with the npm package manager.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule">NpmModule</a></td>
-									<td>
-    Module type to add support for the npm package manager.
-    </td>
-							</tr>
-							<tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></td>
-									<td>
-    <code class="cs">IPackageInstaller</code> implementation for the npm package manager.
-    </td>
-							</tr>
-					</tbody></table>
-				</div>
-			</div>
-		
 
-			<h1 id="InterfaceTypes">Interface Types</h1>
-			<div class="box">
-				<div class="box-body no-padding table-responsive">
-					<table class="table table-striped table-hover two-cols">
-						<thead>
-							<tr>
-								<th>Interface</th>
-									<th>Summary</th>
-							</tr>
-						</thead>
-							<tbody><tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></td>
-									<td>
-    Represents a content resolver for packages installed with the npm package manager.
-    </td>
-							</tr>
-					</tbody></table>
-				</div>
-			</div>
-		
 
-			<h1 id="EnumTypes">Enum Types</h1>
-			<div class="box">
-				<div class="box-body no-padding table-responsive">
-					<table class="table table-striped table-hover two-cols">
-						<thead>
-							<tr>
-								<th>Enum</th>
-									<th>Summary</th>
-							</tr>
-						</thead>
-							<tbody><tr>
-								<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation">Modules<wbr>Installation<wbr>Location</a></td>
-									<td>
-    Locations to install into.
-    </td>
-							</tr>
-					</tbody></table>
-				</div>
-			</div>
-		
+
+	<h1 id="Parameters">Parameters</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover three-cols">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+					<tbody><tr>
+						<td>fileSystem</td>
+						<td>IFileSystem</td>
+						<td>The file system.</td>
+					</tr>
+					<tr>
+						<td>environment</td>
+						<td>ICakeEnvironment</td>
+						<td>The environment.</td>
+					</tr>
+					<tr>
+						<td>log</td>
+						<td>ICakeLog</td>
+						<td>The log.</td>
+					</tr>
+					<tr>
+						<td>configuration</td>
+						<td>ICakeConfiguration</td>
+						<td>The Configuration.</td>
+					</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
+	<h1 id="ReturnValue">Return Value</h1>
+	<div class="box">
+		<div class="box-body no-padding table-responsive">
+			<table class="table table-striped table-hover two-cols">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody><tr>
+					<td>void</td>
+					<td></td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>	
+
 
 	
 </section>

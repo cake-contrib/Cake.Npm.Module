@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.Npm.Module/assets/img/favicon.ico" type="image/x-icon">
-        <title>Cake.Npm.Module - API - NpmPackageInstaller.NpmPackageInstaller(IProcessRunner, ICakeLog, INpmContentResolver, ICakeConfiguration, IToolLocator) Constructor</title>
+        <title>Cake.Npm.Module - API - INpmContentResolver.GetFiles(PackageReference, PackageType, ModulesInstallationLocation) Method</title>
         <link href="/Cake.Npm.Module/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.Npm.Module/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -136,13 +136,10 @@
 			<li class="header">Namespace</li>
 		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></li>
 		<li class="header">Type</li>
-		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></li>
+		<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></li>
 		<li role="separator" class="divider"></li>
-			<li class="header">Constructors</li>
-				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/9840B773">NpmPackageInstaller<wbr>(IProcessRunner, <wbr>ICakeLog, <wbr>I<wbr>Npm<wbr>Content<wbr>Resolver, <wbr>ICakeConfiguration, <wbr>IToolLocator)<wbr></a></li>
 			<li class="header">Method Members</li>
-				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/5839DF25">CanInstall<wbr>(PackageReference, <wbr>PackageType)<wbr></a></li>
-				<li><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller/CF7C2E01">Install<wbr>(PackageReference, <wbr>PackageType, <wbr>DirectoryPath)<wbr></a></li>
+				<li class="selected"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver/C3BFFD14">GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>Modules<wbr>Installation<wbr>Location)<wbr></a></li>
 
 
                     </ul>
@@ -157,15 +154,15 @@
 
 
 <section class="content-header">
-			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a>.</h3>
-	<h1>NpmPackageInstaller<wbr>(IProcessRunner, <wbr>ICakeLog, <wbr>I<wbr>Npm<wbr>Content<wbr>Resolver, <wbr>ICakeConfiguration, <wbr>IToolLocator)<wbr> <small>Constructor</small></h1>
+			<h3><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a>.</h3>
+	<h1>GetFiles<wbr>(PackageReference, <wbr>PackageType, <wbr>Modules<wbr>Installation<wbr>Location)<wbr> <small>Method</small></h1>
 </section>
 <section class="content">
 	
 	
 		<h1 id="Summary">Summary</h1>
 	<div class="lead">
-    Initializes a new instance of the <code class="cs"><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></code> class.
+    Returns the files installed by the given package.
     </div>
 
 		<div class="panel panel-default">
@@ -176,14 +173,14 @@
 						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module">Cake<wbr>.Npm<wbr>.Module</a></dd>
 					
 						<dt>Containing Type</dt>
-						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller">NpmPackageInstaller</a></dd>		
+						<dd><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></dd>		
 					
 				</dl>
   			</div>
 		</div>
 
 	<h1 id="Syntax">Syntax</h1>
-	<pre><code>public NpmPackageInstaller(IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)</code></pre>
+	<pre><code>IReadOnlyCollection&lt;IFile&gt; GetFiles(PackageReference package, PackageType type, ModulesInstallationLocation installationLocation)</code></pre>
 
 
 
@@ -201,29 +198,19 @@
 					</tr>
 				</thead>
 					<tbody><tr>
-						<td>processRunner</td>
-						<td>IProcessRunner</td>
-						<td>The process runner.</td>
+						<td>package</td>
+						<td>PackageReference</td>
+						<td>The package.</td>
 					</tr>
 					<tr>
-						<td>log</td>
-						<td>ICakeLog</td>
-						<td>The log.</td>
+						<td>type</td>
+						<td>PackageType</td>
+						<td>The package type.</td>
 					</tr>
 					<tr>
-						<td>contentResolver</td>
-						<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver">INpmContentResolver</a></td>
-						<td>The content resolver.</td>
-					</tr>
-					<tr>
-						<td>config</td>
-						<td>ICakeConfiguration</td>
-						<td>The configuration.</td>
-					</tr>
-					<tr>
-						<td>toolLocator</td>
-						<td>IToolLocator</td>
-						<td>The ToolLocator.</td>
+						<td>installationLocation</td>
+						<td><a href="/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation">Modules<wbr>Installation<wbr>Location</a></td>
+						<td>The location to install into.</td>
 					</tr>
 			</tbody></table>
 		</div>
@@ -240,8 +227,8 @@
 					</tr>
 				</thead>
 				<tbody><tr>
-					<td>void</td>
-					<td></td>
+					<td>IReadOnlyCollection<wbr>&lt;IFile&gt;<wbr></td>
+					<td>the files installed by the given package.</td>
 				</tr>
 			</tbody></table>
 		</div>
