@@ -30,12 +30,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.0
       with:
         fetch-depth: 0
 
     - name: Cache Tools
-      uses: actions/cache@v2
+      uses: actions/cache@v2.1.7
       with:
         path: tools
         key: ${{ runner.os }}-tools-${{ hashFiles('recipe.cake') }}
@@ -51,7 +51,7 @@ jobs:
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
     - name: Build project
-      uses: cake-build/cake-action@v1
+      uses: cake-build/cake-action@v1.4.0
       with:
         script-path: recipe.cake
         target: DotNetCore-Build

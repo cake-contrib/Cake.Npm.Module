@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Cake.Core;
+using Cake.Core.Configuration;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using Cake.Core.Packaging;
@@ -19,6 +20,7 @@ namespace Cake.Npm.Module
         private readonly IFileSystem _fileSystem;
         private readonly ICakeEnvironment _environment;
         private readonly ICakeLog _log;
+        private readonly ICakeConfiguration _configuration;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NpmContentResolver"/> class.
@@ -26,11 +28,17 @@ namespace Cake.Npm.Module
         /// <param name="fileSystem">The file system.</param>
         /// <param name="environment">The environment.</param>
         /// <param name="log">The log.</param>
-        public NpmContentResolver(IFileSystem fileSystem, ICakeEnvironment environment, ICakeLog log)
+        /// <param name="configuration">The Configuration.</param>
+        public NpmContentResolver(
+            IFileSystem fileSystem,
+            ICakeEnvironment environment,
+            ICakeLog log,
+            ICakeConfiguration configuration)
         {
             _fileSystem = fileSystem;
             _environment = environment;
             _log = log;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -38,9 +46,9 @@ namespace Cake.Npm.Module
         /// </summary>
         /// <param name="package">The package.</param>
         /// <param name="type">The package type.</param>
-        /// <param name="isGlobal">Whether the package is globally installed.</param>
+        /// <param name="installationLocation">The location in which to install.</param>
         /// <returns>The files installed by the given package.</returns>
-        public IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, bool isGlobal)
+        public IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, ModulesInstallationLocation installationLocation)
         {
             if (type == PackageType.Addin)
             {
@@ -49,26 +57,33 @@ namespace Cake.Npm.Module
 
             if (type == PackageType.Tool)
             {
-                return GetToolFiles(package, isGlobal);
+                return GetToolFiles(package, installationLocation);
             }
 
             throw new InvalidOperationException("Unknown resource type.");
         }
 
-        private IReadOnlyCollection<IFile> GetToolFiles(PackageReference package, bool isGlobal = false)
+        private IReadOnlyCollection<IFile> GetToolFiles(PackageReference package, ModulesInstallationLocation modulesInstallationLocation = ModulesInstallationLocation.Workdir)
         {
             DirectoryPath modulesPath;
-            if (isGlobal)
+            switch (modulesInstallationLocation)
             {
-                modulesPath = GetGlobalPrefix()?.Combine("./bin/") ?? "./bin";
-                _log.Verbose($"Found global npm path at: {modulesPath.FullPath}");
-                _log.Verbose(
-                    "Using global npm binaries folder: installation may succeed without binaries being installed");
-            }
-            else
-            {
-                modulesPath = GetLocalInstallPath(package);
-                _log.Verbose("Using local install path: " + modulesPath?.FullPath);
+                case ModulesInstallationLocation.Global:
+                    modulesPath = GetGlobalPrefix()?.Combine("./bin/") ?? "./bin";
+                    _log.Verbose($"Found global npm path at: {modulesPath.FullPath}");
+                    _log.Verbose(
+                        "Using global npm binaries folder: installation may succeed without binaries being installed");
+                    break;
+                case ModulesInstallationLocation.Workdir:
+                    modulesPath = GetLocalInstallPath(package);
+                    _log.Verbose("Using local install path: " + modulesPath?.FullPath);
+                    break;
+                case ModulesInstallationLocation.Tools:
+                    modulesPath = GetToolsLocalInstallPath(package);
+                    _log.Verbose("Using tools install path: " + modulesPath?.FullPath);
+                    break;
+                default:
+                    throw new ArgumentException("not a known value of InstallationLocation.", nameof(modulesInstallationLocation));
             }
 
             if (modulesPath == null || !_fileSystem.GetDirectory(modulesPath).Exists)
@@ -85,23 +100,40 @@ namespace Cake.Npm.Module
             return new ReadOnlyCollection<IFile>(new List<IFile>());
         }
 
+        private DirectoryPath GetToolsLocalInstallPath(PackageReference package)
+        {
+            var toolsFolder = _fileSystem.GetDirectory(
+                _configuration.GetToolPath(_environment.WorkingDirectory, _environment));
+
+            if (!toolsFolder.Exists)
+            {
+                toolsFolder.Create();
+            }
+
+            var modules = toolsFolder.Path.Combine("./node_modules/");
+            return GetPackagePath(modules, package);
+        }
+
         private DirectoryPath GetLocalInstallPath(PackageReference package)
         {
             var modules = _environment.WorkingDirectory.Combine("./node_modules/");
+            return GetPackagePath(modules, package);
+        }
+
+        private DirectoryPath GetPackagePath(DirectoryPath modules, PackageReference package)
+        {
             var packagePath = modules.Combine("./" + package.Package);
             if (_fileSystem.GetDirectory(packagePath).Exists)
             {
                 return packagePath;
             }
-            else
+
+            var scopedPackages = _fileSystem.GetDirectory(modules).GetDirectories("@*", SearchScope.Current);
+            foreach (var scopedPackage in scopedPackages)
             {
-                var scopedPackages = _fileSystem.GetDirectory(modules).GetDirectories("@*", SearchScope.Current);
-                foreach (var scopedPackage in scopedPackages)
+                if (scopedPackage.GetDirectories("./" + package.Package, SearchScope.Current).Any())
                 {
-                    if (scopedPackage.GetDirectories("./" + package.Package, SearchScope.Current).Any())
-                    {
-                        return scopedPackage.GetDirectories("./" + package.Package, SearchScope.Current).First().Path;
-                    }
+                    return scopedPackage.GetDirectories("./" + package.Package, SearchScope.Current).First().Path;
                 }
             }
 
