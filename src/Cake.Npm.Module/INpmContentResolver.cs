@@ -14,8 +14,8 @@ namespace Cake.Npm.Module
         /// </summary>
         /// <param name="package">The package.</param>
         /// <param name="type">The package type.</param>
-        /// <param name="isGlobal">Whether the package is globally installed.</param>
+        /// <param name="installationLocation">The location to install into.</param>
         /// <returns>the files installed by the given package.</returns>
-         IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, bool isGlobal);
+         IReadOnlyCollection<IFile> GetFiles(PackageReference package, PackageType type, ModulesInstallationLocation installationLocation);
     }
 }

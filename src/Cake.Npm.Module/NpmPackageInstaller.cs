@@ -24,6 +24,8 @@ namespace Cake.Npm.Module
         private readonly INpmContentResolver _contentResolver;
         private readonly ICakeConfiguration _config;
         private readonly IToolLocator _toolLocator;
+        private readonly ICakeEnvironment _environment;
+        private readonly IFileSystem _fileSystem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NpmPackageInstaller"/> class.
@@ -33,13 +35,24 @@ namespace Cake.Npm.Module
         /// <param name="contentResolver">The content resolver.</param>
         /// <param name="config">The configuration.</param>
         /// <param name="toolLocator">The ToolLocator.</param>
-        public NpmPackageInstaller(IProcessRunner processRunner, ICakeLog log, INpmContentResolver contentResolver, ICakeConfiguration config, IToolLocator toolLocator)
+        /// <param name="environment">The Environment.</param>
+        /// <param name="fileSystem">The Filesystem.</param>
+        public NpmPackageInstaller(
+            IProcessRunner processRunner,
+            ICakeLog log,
+            INpmContentResolver contentResolver,
+            ICakeConfiguration config,
+            IToolLocator toolLocator,
+            ICakeEnvironment environment,
+            IFileSystem fileSystem)
         {
             _processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));
             _log = log ?? throw new ArgumentNullException(nameof(log));
             _contentResolver = contentResolver ?? throw new ArgumentNullException(nameof(contentResolver));
             _config = config ?? throw new ArgumentNullException(nameof(config));
             _toolLocator = toolLocator ?? throw new ArgumentNullException(nameof(toolLocator));
+            _environment = environment ?? throw new ArgumentNullException(nameof(environment));
+            _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
         }
 
         /// <summary>
@@ -94,9 +107,30 @@ namespace Cake.Npm.Module
 
             // Install the package.
             _log.Debug("Installing package {0} with npm...", package.Package);
+            var workingDir = _environment.WorkingDirectory;
+            if (GetModuleInstallationLocation(package) == ModulesInstallationLocation.Tools)
+            {
+                var toolsFolder = _fileSystem.GetDirectory(
+                    _config.GetToolPath(_environment.WorkingDirectory, _environment));
+
+                if (!toolsFolder.Exists)
+                {
+                    toolsFolder.Create();
+                }
+
+                _log.Debug("Installing into cake-tools location: {0}", package.Package);
+                workingDir = toolsFolder.Path;
+            }
+
             var process = _processRunner.Start(
                 npmTool.FullPath,
-                new ProcessSettings { Arguments = GetArguments(package, _config), RedirectStandardOutput = true, Silent = _log.Verbosity < Verbosity.Diagnostic });
+                new ProcessSettings
+                {
+                    Arguments = GetArguments(package, _config),
+                    WorkingDirectory = workingDir,
+                    RedirectStandardOutput = true,
+                    Silent = _log.Verbosity < Verbosity.Diagnostic,
+                });
 
             process.WaitForExit();
 
@@ -108,7 +142,7 @@ namespace Cake.Npm.Module
                 _log.Verbose(Verbosity.Diagnostic, "Output:\r\n{0}", output);
             }
 
-            var result = _contentResolver.GetFiles(package, type, package.GetSwitch("global"));
+            var result = _contentResolver.GetFiles(package, type, GetModuleInstallationLocation(package));
             if (result.Count != 0)
             {
                 return result;
@@ -118,6 +152,21 @@ namespace Cake.Npm.Module
 
             // TODO: maybe some warnings here
             return result;
+        }
+
+        private ModulesInstallationLocation GetModuleInstallationLocation(PackageReference package)
+        {
+            if (package.GetSwitch("global"))
+            {
+                return ModulesInstallationLocation.Global;
+            }
+
+            if (package.GetSwitch("caketools"))
+            {
+                return ModulesInstallationLocation.Tools;
+            }
+
+            return ModulesInstallationLocation.Workdir;
         }
 
         private ProcessArgumentBuilder GetArguments(

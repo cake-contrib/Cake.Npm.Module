@@ -67,6 +67,18 @@ This corresponds to the `--global` option, and tells npm to install this package
 #tool npm:?package=yo&global
 ```
 
+# CakeTool
+
+This parameter controls the installation location of the npm package: While the default is the current working directory (unless [global](#global) is set),
+setting `caketool` will set the installation location to inside the `tools` folder and thus ensure that the installed tools are automatically found as
+tools in Cake.
+
+### Example
+
+```
+#tool npm:?package=yo&caketool
+```
+
 # Save
 
 This corresponds to the `--save*` options and controls npm's behaviour for saving dependencies. Specifying `save` with no arguments is equivalent to `--save`, while providing a value (or multiple parameters) provides fine-grained control.
