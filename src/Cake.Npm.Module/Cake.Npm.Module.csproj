@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AssemblyName>Cake.Npm.Module</AssemblyName>
+    <CakeVersion>3.0.0</CakeVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -20,7 +21,8 @@
     <Authors>Alistair Chapman</Authors>
     <Copyright>Alistair Chapman $(FullYear)</Copyright>
     <Title>Cake npm Module</Title>
-    <Description>This Cake module adds support for the npm package manager when installing tools in your Cake build scripts.</Description>
+    <Description>This Cake module adds support for the npm package manager when installing tools in your Cake build scripts.
+    This Module is compatible with Cake v$(CakeVersion).</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.Npm.Module</PackageProjectUrl>
     <PackageTags>cake;build;cake-build;module;script;cake-module;cake-contrib;ci;npm;node</PackageTags>
@@ -36,12 +38,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="2.0.0" PrivateAssets="all" />
-    <PackageReference Include="CakeContrib.Guidelines" Version="1.3.0">
+    <PackageReference Include="Cake.Core" Version="$(CakeVersion)" PrivateAssets="all" />
+    <PackageReference Include="CakeContrib.Guidelines" Version="1.4.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
