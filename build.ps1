@@ -1,23 +1,11 @@
-$ErrorActionPreference = 'Stop'
+Set-Location -LiteralPath $PSScriptRoot
 
-function Run([string[]]$arguments) {
-	$cmd = @("& dotnet")
-	$cmd += $arguments
-	$cmdLine = $cmd -join " "
-	Write-Verbose "> $cmdLine"
-	Invoke-Expression $cmdLine
+$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE = '1'
+$env:DOTNET_CLI_TELEMETRY_OPTOUT = '1'
+$env:DOTNET_NOLOGO = '1'
 
-	if ($LASTEXITCODE -ne 0) {
-		Write-Host "Non-Zero exit code ($($LASTEXITCODE)), exiting..."
-		exit $LASTEXITCODE
-	}
-}
+dotnet tool restore
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-Run tool, restore
-
-Run cake, recipe.cake, --bootstrap
-
-$arguments = @("cake"; "recipe.cake")
-$arguments += @($args)
-
-Run $arguments
+dotnet cake recipe.cake @args
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
