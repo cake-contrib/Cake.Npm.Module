@@ -39,6 +39,20 @@ var searchModule = function() {
     a(
         {
             id:0,
+            title:"NpmModule",
+            content:"NpmModule",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
+            title:"NpmModule",
+            description:""
+        }
+    );
+    a(
+        {
+            id:1,
             title:"NpmContentResolver",
             content:"NpmContentResolver",
             description:'',
@@ -52,21 +66,21 @@ var searchModule = function() {
     );
     a(
         {
-            id:1,
-            title:"NpmPackageInstaller",
-            content:"NpmPackageInstaller",
+            id:2,
+            title:"ModulesInstallationLocation",
+            content:"ModulesInstallationLocation",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
-            title:"NpmPackageInstaller",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
+            title:"ModulesInstallationLocation",
             description:""
         }
     );
     a(
         {
-            id:2,
+            id:3,
             title:"Constants",
             content:"Constants",
             description:'',
@@ -75,20 +89,6 @@ var searchModule = function() {
         {
             url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
             title:"Constants",
-            description:""
-        }
-    );
-    a(
-        {
-            id:3,
-            title:"NpmModule",
-            content:"NpmModule",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
-            title:"NpmModule",
             description:""
         }
     );
@@ -109,14 +109,14 @@ var searchModule = function() {
     a(
         {
             id:5,
-            title:"ModulesInstallationLocation",
-            content:"ModulesInstallationLocation",
+            title:"NpmPackageInstaller",
+            content:"NpmPackageInstaller",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
-            title:"ModulesInstallationLocation",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
+            title:"NpmPackageInstaller",
             description:""
         }
     );
