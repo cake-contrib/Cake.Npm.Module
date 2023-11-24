@@ -7,7 +7,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AssemblyName>Cake.Npm.Module</AssemblyName>
-    <CakeVersion>3.0.0</CakeVersion>
+    <CakeVersion>4.0.0</CakeVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -39,12 +39,12 @@
 
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="$(CakeVersion)" PrivateAssets="all" />
-    <PackageReference Include="CakeContrib.Guidelines" Version="1.4.0">
+    <PackageReference Include="CakeContrib.Guidelines" Version="1.5.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
