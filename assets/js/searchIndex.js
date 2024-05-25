@@ -39,28 +39,28 @@ var searchModule = function() {
     a(
         {
             id:0,
-            title:"NpmContentResolver",
-            content:"NpmContentResolver",
+            title:"Constants",
+            content:"Constants",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
-            title:"NpmContentResolver",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
+            title:"Constants",
             description:""
         }
     );
     a(
         {
             id:1,
-            title:"ModulesInstallationLocation",
-            content:"ModulesInstallationLocation",
+            title:"NpmPackageInstaller",
+            content:"NpmPackageInstaller",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
-            title:"ModulesInstallationLocation",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
+            title:"NpmPackageInstaller",
             description:""
         }
     );
@@ -81,6 +81,20 @@ var searchModule = function() {
     a(
         {
             id:3,
+            title:"ModulesInstallationLocation",
+            content:"ModulesInstallationLocation",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
+            title:"ModulesInstallationLocation",
+            description:""
+        }
+    );
+    a(
+        {
+            id:4,
             title:"INpmContentResolver",
             content:"INpmContentResolver",
             description:'',
@@ -94,29 +108,15 @@ var searchModule = function() {
     );
     a(
         {
-            id:4,
-            title:"NpmPackageInstaller",
-            content:"NpmPackageInstaller",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
-            title:"NpmPackageInstaller",
-            description:""
-        }
-    );
-    a(
-        {
             id:5,
-            title:"Constants",
-            content:"Constants",
+            title:"NpmContentResolver",
+            content:"NpmContentResolver",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/Constants',
-            title:"Constants",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmContentResolver',
+            title:"NpmContentResolver",
             description:""
         }
     );
