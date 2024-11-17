@@ -5,7 +5,7 @@
         <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Cake.Frosting" Version="4.2.0" />
+        <PackageReference Include="Cake.Frosting" Version="5.0.0" />
         <ProjectReference Include="$(ProjectDir)../../../src/Cake.Npm.Module/Cake.Npm.Module.csproj" />
     </ItemGroup>
     <ItemGroup>
