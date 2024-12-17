@@ -7,19 +7,19 @@
       Remove this hack, if Cake.Recipe bumps the usage of Cake.Incubator to version 7.0.0.
     -->
     <TargetFramework Condition="false">netcoreapp3.1</TargetFramework>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="xunit" Version="2.6.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4">
+    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Cake.Testing" Version="4.0.0" />
-    <PackageReference Include="NSubstitute" Version="5.1.0" />
+    <PackageReference Include="Cake.Testing" Version="5.0.0" />
+    <PackageReference Include="NSubstitute" Version="5.3.0" />
   </ItemGroup>
 
   <ItemGroup>
