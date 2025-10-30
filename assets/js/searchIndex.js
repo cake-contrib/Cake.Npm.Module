@@ -53,34 +53,20 @@ var searchModule = function() {
     a(
         {
             id:1,
-            title:"INpmContentResolver",
-            content:"INpmContentResolver",
+            title:"ModulesInstallationLocation",
+            content:"ModulesInstallationLocation",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
-            title:"INpmContentResolver",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
+            title:"ModulesInstallationLocation",
             description:""
         }
     );
     a(
         {
             id:2,
-            title:"NpmModule",
-            content:"NpmModule",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
-            title:"NpmModule",
-            description:""
-        }
-    );
-    a(
-        {
-            id:3,
             title:"NpmPackageInstaller",
             content:"NpmPackageInstaller",
             description:'',
@@ -89,6 +75,20 @@ var searchModule = function() {
         {
             url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmPackageInstaller',
             title:"NpmPackageInstaller",
+            description:""
+        }
+    );
+    a(
+        {
+            id:3,
+            title:"NpmModule",
+            content:"NpmModule",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/NpmModule',
+            title:"NpmModule",
             description:""
         }
     );
@@ -109,14 +109,14 @@ var searchModule = function() {
     a(
         {
             id:5,
-            title:"ModulesInstallationLocation",
-            content:"ModulesInstallationLocation",
+            title:"INpmContentResolver",
+            content:"INpmContentResolver",
             description:'',
             tags:''
         },
         {
-            url:'/Cake.Npm.Module/api/Cake.Npm.Module/ModulesInstallationLocation',
-            title:"ModulesInstallationLocation",
+            url:'/Cake.Npm.Module/api/Cake.Npm.Module/INpmContentResolver',
+            title:"INpmContentResolver",
             description:""
         }
     );
