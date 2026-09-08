@@ -7,7 +7,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <AssemblyName>Cake.Npm.Module</AssemblyName>
-    <CakeVersion>5.0.0</CakeVersion>
+    <CakeVersion>6.2.0</CakeVersion>
   </PropertyGroup>
 
   <PropertyGroup>
