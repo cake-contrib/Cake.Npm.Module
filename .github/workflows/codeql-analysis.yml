@@ -60,7 +60,7 @@ jobs:
 
     - uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 10.0.x
 
     - name: Build project
       uses: cake-build/cake-action@1223b6fa067ad192159f43b50cd4f953679b0934 # v2.0.0
